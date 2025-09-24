@@ -4,7 +4,7 @@ import Name from './Components/Name';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Card from './Components/Card';
-
+import Counter from './Components/Counter';
 
 function App() {
   return (
@@ -17,6 +17,8 @@ function App() {
      <Card />
       <br/>
      <Footer />
+     <Counter />
+     
     </div>
   );
 }
