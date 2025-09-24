@@ -9,7 +9,7 @@ function ControllerForm() {
         value={text} 
         onChange={(e)=> settext(e.target.value)}
         />
-        <p>you type in </p>
+        <p>you type : {text} </p>
     </div>
   )
 }

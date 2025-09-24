@@ -1,9 +1,13 @@
 import React from 'react'
+import ControllerForm from './Small Components/ControllerForm';
+
 
 const Name = () => {
     let N = "rahul";
   return (
+   
     <div>Start New Journy { N }
+    <ControllerForm />
     <div className="ra">
         <P Name = "jak" />
         <P Name = "Bak" />
