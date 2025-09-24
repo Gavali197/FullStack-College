@@ -1,6 +1,6 @@
 import React from 'react'
 import ControllerForm from './Small Components/ControllerForm';
-
+import Toggle from './Small Components/Toggle';
 
 const Name = () => {
     let N = "rahul";
@@ -8,6 +8,7 @@ const Name = () => {
    
     <div>Start New Journy { N }
     <ControllerForm />
+    <Toggle />
     <div className="ra">
         <P Name = "jak" />
         <P Name = "Bak" />

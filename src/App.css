@@ -2,5 +2,10 @@
   background-color: aquamarine;
   padding: 20PX;
   margin: 20PX;
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body{
+  background-color: bisque;
 }
