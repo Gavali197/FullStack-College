@@ -13,3 +13,17 @@ body{
   margin: 20px;
   padding: 20px;
 }
+
+.Counter{
+  margin: 30px;
+  padding: 50px;
+  width: 200px;
+  background-color: violet;
+}
+
+.login{
+  background-color:chartreuse;
+  margin: 20px;
+  padding: 30px;
+  width: 200px;
+}
