@@ -7,6 +7,9 @@ import Card from './Components/Card';
 import Counter from './Components/Counter';
 import CounterApp from './Components/Small Components/CounterApp';
 import LoginForm from './Components/Small Components/LoginForm';
+import Products from './Components/Small Components/Products';
+import TodosApp from './Components/Small Components/TodosApp';
+import UserList from './Components/Small Components/UserList';
 
 
 
@@ -18,19 +21,22 @@ function App() {
       <CounterApp />
       </div>
 
+    <Products />
+    <TodosApp />
+    <UserList />
       <div className='login'>
-      <LoginForm />
+      {/* <LoginForm /> */}
       </div>
       
     <div className="header">
-      <Header />  
+      {/* <Header />   */}
     </div>      
 
       <Name />  
      <Card />
       <br/>
-     <Footer />
-     <Counter />
+     {/* <Footer /> */}
+     {/* <Counter /> */}
      
     </div>
   );
