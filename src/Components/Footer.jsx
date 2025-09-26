@@ -1,22 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Footer = () => {
+  function
+
   return (
     <div>
         <Name year = "1974" company = "old monk" />
-        <button onClick={()=>loginStatus}>Cheack login Status here</button>
+        <button>Cheack login Status here</button>
     </div>
   )
 }
 
-function loginStatus({isLoged}) {
-  if(isLoged){
-    return <h1>Login Here</h1>
-  }else{
-    return <h1>Not login here</h1>
-  }
-}
-const isLoged = true;
+
+
 
 function Name({year, company}) {
     return(
