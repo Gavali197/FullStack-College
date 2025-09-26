@@ -10,30 +10,49 @@ import LoginForm from './Components/Small Components/LoginForm';
 import Products from './Components/Small Components/Products';
 import TodosApp from './Components/Small Components/TodosApp';
 import UserList from './Components/Small Components/UserList';
+import StylePractice from './Components/Small Components/StylePractice';
 
 
 
 
 function App() {
   return (
-    <div className="App">
-      <div className='Counter'>
-      <CounterApp />
-      </div>
+  
+  
+  <div className="App">
 
-    <Products />
-    <TodosApp />
-    <UserList />
+  <StylePractice />  
+      
+    <div className='Counter'>
+    {/* <CounterApp /> */}
+    </div>
+
+    {/* <Products /> */}
+    
+    
+    {/* <TodosApp /> */}
+
+    
+    
+    <div className='userlist'>
+    {/* <UserList /> */}
+    </div>
+    
+
+
       <div className='login'>
       {/* <LoginForm /> */}
       </div>
-      
+
+
+  
     <div className="header">
       {/* <Header />   */}
     </div>      
 
-      <Name />  
-     <Card />
+
+      {/* <Name />   */}
+     {/* <Card /> */}
       <br/>
      {/* <Footer /> */}
      {/* <Counter /> */}

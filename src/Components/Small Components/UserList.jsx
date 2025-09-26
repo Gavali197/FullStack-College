@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 
+
 function UserList() {
-    const [user, setuser] = useState([ {/* here you enter user names */}])
+    const [user, setuser] = useState([ /* here you enter user names */])
     return (
     <div>
+        
         <ul>
             {user.map((index, Nav)=>(
                 <li key={Nav}>{index}</li>
