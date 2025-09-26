@@ -21,7 +21,7 @@ function App() {
   
   <div className="App">
 
-  <StylePractice />  
+  {/* <StylePractice />   */}
       
     <div className='Counter'>
     {/* <CounterApp /> */}
