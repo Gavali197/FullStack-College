@@ -11,6 +11,8 @@ import Products from './Components/Small Components/Products';
 import TodosApp from './Components/Small Components/TodosApp';
 import UserList from './Components/Small Components/UserList';
 import StylePractice from './Components/Small Components/StylePractice';
+import ControlledForm from './Components/Small Components/ControlledForm';
+import UncontrolledForm from './Components/Small Components/UncontrolledForm';
 
 
 
@@ -57,6 +59,15 @@ function App() {
      {/* <Footer /> */}
      {/* <Counter /> */}
      
+
+     {/*Session 5 Controlled Form Using UseState -> ControlledForm */}
+
+      {/* <ControlledForm /> */}
+
+     {/*Session 5 unControlled Form Using UseState -> unControlledForm */}
+
+      {/* <UncontrolledForm /> */}
+
     </div>
   );
 
