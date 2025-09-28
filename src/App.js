@@ -62,7 +62,7 @@ function App() {
 
      {/*Session 5 Controlled Form Using UseState -> ControlledForm */}
 
-      {/* <ControlledForm /> */}
+      <ControlledForm />
 
      {/*Session 5 unControlled Form Using UseState -> unControlledForm */}
 
