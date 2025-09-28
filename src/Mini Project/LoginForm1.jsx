@@ -9,30 +9,38 @@ function LoginForm1() {
  const handlesubmit = (e) =>{
     e.preventDefault();
     console.log(`${user}, ${email}, ${PassWord}, ${conpassm}`);
-    user("");
-    email("");
-    PassWord("");
-    conpassm("");
+  
+    //use for 
+    // setuser("");
+    // setemail("");
+    // setpassword("");
+    // setconpass("");
+ }
+
+ const validation = () => {
+    if(PassWord == conpassm){
+
+    }
  }
 
   return (
     <div>
         <form onSubmit={handlesubmit}>
         <div className="container">
-            <label>Enter Your Name : </label>
+            <label>Enter Name : </label>
             <input type="text" value={user} onChange={(e)=>setuser(e.target.value)} required /> <br />
 
             
-            <label>Enter Your Email : </label>
+            <label>Enter Email : </label>
             <input type="text" value={email} onChange={(e)=>setemail(e.target.value)} required /> <br />
 
             
-            <label>Enter Your Name : </label>
-            <input type="text" value={PassWord} onChange={(e)=>PassWord(e.target.value)} required /> <br />
+            <label>Enter Password : </label>
+            <input type="text" value={PassWord} onChange={(e)=>setpassword(e.target.value)} required /> <br />
 
             
-            <label>Enter Your Name : </label>
-            <input type="text" value={conpassm} onChange={(e)=>conpassm(e.target.value)} required /> <br />
+            <label>Enter Confirm Password : </label>
+            <input type="text" value={conpassm} onChange={(e)=>setconpass(e.target.value)} required /> <br />
             
         </div>
         <button type="submit">Submit</button>

@@ -13,6 +13,7 @@ import UserList from './Components/Small Components/UserList';
 import StylePractice from './Components/Small Components/StylePractice';
 import ControlledForm from './Components/Small Components/ControlledForm';
 import UncontrolledForm from './Components/Small Components/UncontrolledForm';
+import LoginForm1 from './Mini Project/LoginForm1';
 
 
 
@@ -62,13 +63,15 @@ function App() {
 
      {/*Session 5 Controlled Form Using UseState -> ControlledForm */}
 
-      <ControlledForm />
+      {/* <ControlledForm /> */}
 
      {/*Session 5 unControlled Form Using UseState -> unControlledForm */}
 
       {/* <UncontrolledForm /> */}
 
     {/* build frist login form using controlled form */}
+
+    <LoginForm1 />
     </div>
   );
 
