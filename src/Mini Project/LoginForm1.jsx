@@ -5,22 +5,30 @@ function LoginForm1() {
   const [email, setemail] = useState("");
   const [PassWord,setpassword] = useState("");
   const [conpassm, setconpass] = useState("");
-    
+  const [error, seterror] =  useState("");
+
  const handlesubmit = (e) =>{
     e.preventDefault();
-    console.log(`${user}, ${email}, ${PassWord}, ${conpassm}`);
-  
-    //use for 
-    // setuser("");
-    // setemail("");
-    // setpassword("");
-    // setconpass("");
- }
-
- const validation = () => {
-    if(PassWord == conpassm){
-
+    // console.log(`${user}, ${email}, ${PassWord}, ${conpassm}`);
+    if(user === ""){
+        seterror("User Fill data please !");
+    }else if(!email.includes("@")){
+        seterror("You email is wrong");
+    }else if(PassWord < 6){
+        seterror("Your pass Less 6 letter");
+    }else if(conpassm === PassWord){
+        seterror("Cheack Password Not Match");
+    }else{
+        seterror("");
+        alert("Form Submit SuccessFully 😊");
     }
+
+     // use for after submit clear box  
+    setuser("");
+    setemail("");
+    setpassword("");
+    setconpass("");
+
  }
 
   return (
@@ -44,6 +52,7 @@ function LoginForm1() {
             
         </div>
         <button type="submit">Submit</button>
+        <p style={{color: "red"}}>{error}</p>
         </form>       
     </div>
   )
