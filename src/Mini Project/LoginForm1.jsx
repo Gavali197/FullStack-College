@@ -16,7 +16,7 @@ function LoginForm1() {
         seterror("You email is wrong");
     }else if(PassWord < 6){
         seterror("Your pass Less 6 letter");
-    }else if(conpassm === PassWord){
+    }else if(conpassm !== PassWord){
         seterror("Cheack Password Not Match");
     }else{
         seterror("");
@@ -36,19 +36,19 @@ function LoginForm1() {
         <form onSubmit={handlesubmit}>
         <div className="container">
             <label>Enter Name : </label>
-            <input type="text" value={user} onChange={(e)=>setuser(e.target.value)} required /> <br />
+            <input type="text" value={user} onChange={(e)=>setuser(e.target.value)}  /> <br />
 
             
             <label>Enter Email : </label>
-            <input type="text" value={email} onChange={(e)=>setemail(e.target.value)} required /> <br />
+            <input type="text" value={email} onChange={(e)=>setemail(e.target.value)}  /> <br />
 
             
             <label>Enter Password : </label>
-            <input type="text" value={PassWord} onChange={(e)=>setpassword(e.target.value)} required /> <br />
+            <input type="text" value={PassWord} onChange={(e)=>setpassword(e.target.value)}  /> <br />
 
             
             <label>Enter Confirm Password : </label>
-            <input type="text" value={conpassm} onChange={(e)=>setconpass(e.target.value)} required /> <br />
+            <input type="text" value={conpassm} onChange={(e)=>setconpass(e.target.value)}  /> <br />
             
         </div>
         <button type="submit">Submit</button>
