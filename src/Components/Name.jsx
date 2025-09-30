@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ControllerForm from './Small Components/ControllerForm';
 import Toggle from './Small Components/Toggle';
 
 const Name = () => {
+
+        const [Names, setnames] = useState("");
+
+    const Handlesubmit = (e) =>{
+        e.preventDefault();
+    }
+
     let N = "rahul";
   return (
    
@@ -21,6 +28,12 @@ const Name = () => {
         <button onClick={() => alert("Inline Click!")}>Click Me</button>
 
     </div>
+
+<form onSubmit={Handlesubmit}>
+    <div className='title'>{Names}</div>
+    <input type="text" value={Names} onChange={(e)=>setnames(e.target.value)} />
+    <button type='submit'>Change Title Name</button>
+</form>
     </div> 
     
   )

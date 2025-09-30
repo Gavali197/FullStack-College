@@ -15,6 +15,7 @@ import ControlledForm from './Components/Small Components/ControlledForm';
 import UncontrolledForm from './Components/Small Components/UncontrolledForm';
 import LoginForm1 from './Mini Project/LoginForm1';
 import UseEffects from './Components/UseEffects';
+import Clock from './Components/Small Components/Clock';
 
 
 
@@ -54,6 +55,7 @@ function App() {
       {/* <Header />   */}
     </div>      
 
+{/* <Clock /> */}
 
       {/* <Name />   */}
      {/* <Card /> */}
@@ -61,7 +63,7 @@ function App() {
      {/* <Footer /> */}
      {/* <Counter /> */}
      
-     <UseEffects />
+     {/* <UseEffects /> */}
 
      {/*Session 5 Controlled Form Using UseState -> ControlledForm */}
 
