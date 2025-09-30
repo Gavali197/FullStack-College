@@ -58,7 +58,7 @@ function App() {
      {/* <Card /> */}
       <br/>
      {/* <Footer /> */}
-     {/* <Counter /> */}
+     <Counter />
      
 
      {/*Session 5 Controlled Form Using UseState -> ControlledForm */}
@@ -71,7 +71,7 @@ function App() {
 
     {/* build frist login form using controlled form */}
 
-    <LoginForm1 />
+    {/* <LoginForm1 /> */}
     </div>
   );
 

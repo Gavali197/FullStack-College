@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 
 const Counter = () => {
     const [counts, setcounts] = useState(0); //[value, updater] 
+
+    useEffect(()=>{
+      console.log("components re-render Counts : ");
+    })
   return (
     <div>
         <h2>counts : {counts}</h2>
