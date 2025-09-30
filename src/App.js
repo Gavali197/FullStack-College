@@ -14,6 +14,7 @@ import StylePractice from './Components/Small Components/StylePractice';
 import ControlledForm from './Components/Small Components/ControlledForm';
 import UncontrolledForm from './Components/Small Components/UncontrolledForm';
 import LoginForm1 from './Mini Project/LoginForm1';
+import UseEffects from './Components/UseEffects';
 
 
 
@@ -58,8 +59,9 @@ function App() {
      {/* <Card /> */}
       <br/>
      {/* <Footer /> */}
-     <Counter />
+     {/* <Counter /> */}
      
+     <UseEffects />
 
      {/*Session 5 Controlled Form Using UseState -> ControlledForm */}
 
