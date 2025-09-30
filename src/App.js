@@ -57,7 +57,7 @@ function App() {
 
 {/* <Clock /> */}
 
-      {/* <Name />   */}
+      <Name />  
      {/* <Card /> */}
       <br/>
      {/* <Footer /> */}
