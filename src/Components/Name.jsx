@@ -64,7 +64,6 @@
 //Create a PageTitle component → change document.title whenever user types into an input.
 
 
-
 import React, { useEffect, useState } from 'react'
 
 function Name() {
@@ -74,6 +73,7 @@ function Name() {
     document.title = title ? title : "react app";   //use ternary opertor for if (?, true) else (:, false)
   }, [title])
     return (
+      //🧿
     <div>
         <title>Hello Guru</title>
         <input type="text" value={title} onChange={(e)=> settitle(e.target.value)} />
