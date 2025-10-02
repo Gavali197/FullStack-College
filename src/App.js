@@ -55,9 +55,9 @@ function App() {
       {/* <Header />   */}
     </div>      
 
-{/* <Clock /> */}
+<Clock />
 
-      <Name />  
+      {/* <Name />   */}
      {/* <Card /> */}
       <br/>
      {/* <Footer /> */}
