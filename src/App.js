@@ -17,6 +17,7 @@ import LoginForm1 from './Mini Project/LoginForm1';
 import UseEffects from './Components/UseEffects';
 import Clock from './Components/Small Components/Clock';
 import Fetch from './Components/Small Components/Fetch';
+import Fetch_PostList from './Components/Small Components/Fetch_PostList';
 
 
 
@@ -58,7 +59,9 @@ function App() {
 {/* <StylePractice /> */}
 <Clock />
 
-<Fetch />
+<Fetch_PostList />
+
+{/* <Fetch /> */}
 
       {/* <Name />   */}
      {/* <Card /> */}
