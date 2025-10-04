@@ -8,8 +8,8 @@ function Fetch_PostList() {
     useEffect(()=>{
        const FetchUsers = async() =>{
         try {
-        const res = fetch("https://jsonplaceholder.typicode.com/posts");
-        const data = res.json();
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+        const data = await res.json();
         setuser(data);
         } catch (err) {
             console.error("Errors : ", err);    
