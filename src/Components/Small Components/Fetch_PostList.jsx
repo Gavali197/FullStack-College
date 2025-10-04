@@ -5,7 +5,6 @@ function Fetch_PostList() {
     const [user, setuser] = useState([]);
     const [loading, setloding] = useState(true);
 
-    useEffect(()=>{
        const FetchUsers = async() =>{
         try {
         const res = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -17,6 +16,9 @@ function Fetch_PostList() {
             setloding(false);
         }
        }
+
+    useEffect(()=>{
+
        FetchUsers();
     }, []);
 
@@ -33,6 +35,7 @@ function Fetch_PostList() {
             </div>
             ))}
         </ul>
+        <button onClick={FetchUsers}>Reload</button>
     </div>
   )
 }
