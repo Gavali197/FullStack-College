@@ -16,6 +16,7 @@ import UncontrolledForm from './Components/Small Components/UncontrolledForm';
 import LoginForm1 from './Mini Project/LoginForm1';
 import UseEffects from './Components/UseEffects';
 import Clock from './Components/Small Components/Clock';
+import Fetch from './Components/Small Components/Fetch';
 
 
 
@@ -54,8 +55,10 @@ function App() {
     <div className="header">
       {/* <Header />   */}
     </div>      
-<StylePractice />
+{/* <StylePractice /> */}
 <Clock />
+
+<Fetch />
 
       {/* <Name />   */}
      {/* <Card /> */}
