@@ -45,6 +45,8 @@ import React, { useEffect, useState } from 'react'
 function Clock() {
   const [timer, settime] = useState(new Date());
 
+  
+
   useEffect(()=>{
      const timer = setInterval(()=>{
       settime(new Date());

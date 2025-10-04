@@ -54,7 +54,7 @@ function App() {
     <div className="header">
       {/* <Header />   */}
     </div>      
-
+<StylePractice />
 <Clock />
 
       {/* <Name />   */}
