@@ -24,64 +24,64 @@ import Fetch_PostList from './Components/Small Components/Fetch_PostList';
 
 function App() {
   return (
-  
-  
-  <div className="App">
-
-  {/* <StylePractice />   */}
-      
-    <div className='Counter'>
-    {/* <CounterApp /> */}
-    </div>
-
-    {/* <Products /> */}
-    
-    
-    {/* <TodosApp /> */}
-
-    
-    
-    <div className='userlist'>
-    {/* <UserList /> */}
-    </div>
-    
 
 
-      <div className='login'>
-      {/* <LoginForm /> */}
+    <div className="App">
+
+      {/* <StylePractice />   */}
+
+      <div className='Counter'>
+        {/* <CounterApp /> */}
+      </div>
+
+      {/* <Products /> */}
+
+
+      {/* <TodosApp /> */}
+
+
+
+      <div className='userlist'>
+        {/* <UserList /> */}
       </div>
 
 
-  
-    <div className="header">
-      {/* <Header />   */}
-    </div>      
-{/* <StylePractice /> */}
-<Clock />
 
-<Fetch_PostList />
+      <div className='login'>
+        {/* <LoginForm /> */}
+      </div>
 
-{/* <Fetch /> */}
+
+
+      <div className="header">
+        {/* <Header />   */}
+      </div>
+      {/* <StylePractice /> */}
+      <Clock />
+
+      <Fetch_PostList />
+
+      {/* <Fetch /> */}
 
       {/* <Name />   */}
-     {/* <Card /> */}
-      <br/>
-     {/* <Footer /> */}
-     {/* <Counter /> */}
-     
-     {/* <UseEffects /> */}
+      {/* <Card /> */}
+      <br />
+      {/* <Footer /> */}
+      {/* <Counter /> */}
 
-     {/*Session 5 Controlled Form Using UseState -> ControlledForm */}
+      {/* <UseEffects /> */}
+
+      {/*Session 5 Controlled Form Using UseState -> ControlledForm */}
 
       {/* <ControlledForm /> */}
 
-     {/*Session 5 unControlled Form Using UseState -> unControlledForm */}
+      {/*Session 5 unControlled Form Using UseState -> unControlledForm */}
 
       {/* <UncontrolledForm /> */}
 
-    {/* build frist login form using controlled form */}
+      {/* build frist login form using controlled form */}
 
-    {/* <LoginForm1 /> */}
+      {/* <LoginForm1 /> */}
     </div>
   );
 
