@@ -36,9 +36,11 @@ function App() {
 
       <div className="header">{/* <Header />   */}</div>
       {/* <StylePractice /> */}
-      <Clock />
+      {/* <Clock /> */}
 
-      <Fetch_PostList />
+    
+
+      {/* <Fetch_PostList /> */}
 
       {/* <Fetch /> */}
 
@@ -56,7 +58,7 @@ function App() {
 
       {/*Session 5 unControlled Form Using UseState -> unControlledForm */}
 
-      {/* <UncontrolledForm /> */}
+      <UncontrolledForm />
 
       {/* build frist login form using controlled form */}
 

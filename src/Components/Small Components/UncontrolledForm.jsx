@@ -33,14 +33,21 @@ import React, { useRef } from 'react'
 
 
 function UncontrolledForm() {
+   const inputRef = useRef(null);
 
-    const inputFocus = useRef(null);
+  const handleFocus = () => {
+    // Step 2: Access input DOM element directly
+    inputRef.current.focus();
+  };
 
-    return (
+  return (
     <div>
-
+      <h2>useRef Example 🚀</h2>
+      <input ref={inputRef} type="text" placeholder="Click the button below..." />
+      <br />
+      <button onClick={handleFocus}>Focus Input</button>
     </div>
-  )
+  );
 }
 
 export default UncontrolledForm
