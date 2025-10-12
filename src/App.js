@@ -19,10 +19,23 @@ import Clock from "./Components/Small Components/Clock";
 import Fetch from "./Components/Small Components/Fetch";
 import Fetch_PostList from "./Components/Small Components/Fetch_PostList";
 import UseMemo from "./Components/Concept/UseMemo";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import FormWithSession from "./Exam/Form";
+import Home from "./Exam/Home";
 
 function App() {
   return (
     <div className="App">
+
+
+<Router>
+      <Routes>
+        <Route path="/" element={<FormWithSession />} />
+        <Route path="/home" element={<Home />} />
+      </Routes>
+    </Router>
+
+
       {/* <StylePractice />   */}
 
       <div className="Counter">{/* <CounterApp /> */}</div>
@@ -59,7 +72,7 @@ function App() {
 
       {/*Session 5 unControlled Form Using UseState -> unControlledForm */}
 
-      <UseMemo />
+      {/* <UseMemo /> */}
 
       {/* <UncontrolledForm /> */}
 
