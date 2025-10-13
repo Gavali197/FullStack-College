@@ -8,7 +8,15 @@ function LoginForm2() {
     const handlesubmit = (e) =>{
         e.prevantDefault();
 
-        if()
+        if(!form.email || !form.password){
+            seterror("All Field are required so fill all input filed");
+        }else if(!form.email.includes("@")){
+            seterror("Enter Valid email");
+        }else if(!form.password < 6){
+            seterror("Password Should Be at least 6");
+        }else{
+            alert("Form Submit Successfully...");
+        }
     }
 
     return (
