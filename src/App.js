@@ -24,11 +24,14 @@ import FormWithSession from "./Exam/Form";
 import Home from "./Exam/Home";
 import UseRef from "./Components/Concept/UseRef";
 import LoginForm2 from "./Mini Project/LoginForm2";
+import RegistrationForm from "./Mini Project/RegistrationForm";
 
 function App() {
   return (
     <div className="App">
-      <LoginForm2 /> {/* This Is small project part of the data */}
+      {/* <LoginForm2 /> This Is small project part of the data */}
+
+    <RegistrationForm />
 
     {/* <UseRef /> */}
 
