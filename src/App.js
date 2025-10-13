@@ -23,12 +23,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FormWithSession from "./Exam/Form";
 import Home from "./Exam/Home";
 import UseRef from "./Components/Concept/UseRef";
+import LoginForm2 from "./Mini Project/LoginForm2";
 
 function App() {
   return (
     <div className="App">
+      <LoginForm2 /> {/* This Is small project part of the data */}
 
-    <UseRef />
+    {/* <UseRef /> */}
 
       {/* <StylePractice />   */}
 
