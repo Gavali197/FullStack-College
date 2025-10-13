@@ -17,11 +17,11 @@ function RegistrationForm() {
   };
 
   const handleSubmbit = (e) => {
-    e.preventdefault();
+    e.preventDefault();
 
-    if (!form.user || !form.email || form.password || form.Cpassword) {
+    if (!form.user || !form.email || !form.password || !form.Cpassword) {
       seterror("Fill All Field");
-    } else if (form.email.includes("@")) {
+    } else if (!form.email.includes("@")) {
       seterror("Invalid Email");
     } else if (form.password.length < 6) {
       seterror("Password Should Be at Least 6 charecters");
@@ -31,6 +31,18 @@ function RegistrationForm() {
       seterror("");
       alert("Successfully Registration ✅");
     }
+
+    // ✅ Show form data in console
+      console.log("User Registered:", form);
+
+      // ✅ Clear form fields
+      setform({
+        user: "",
+        email: "",
+        password: "",
+        Cpassword: "",
+      });
+
   };
   return (
     <div>
@@ -38,13 +50,13 @@ function RegistrationForm() {
         <form onSubmit={handleSubmbit}>
         <h2>Registration Form</h2>
         <label>Name </label>
-        <input type="text" name="name" value={change}/>
+        <input type="text" name="user" value={form.user} onChange={change}/>
         <label>Email</label>
-        <input type="text" name="email" value={change}/>
+        <input type="text" name="email" value={form.email} onChange={change}/>
         <label>Password </label>
-        <input type="text" name="password" value={change}/>
-        Confirm Password
-        <input type="text" name="cpassword" value={change} />
+        <input type="text" name="password" value={form.password}onChange={change}/>
+        <label>Confirm Password</label>
+        <input type="text" name="Cpassword" value={form.Cpassword} onChange={change} />
         <button id="btn">Submit</button>
         <p style={{color:"red"}}>{error}</p>
         </form>
