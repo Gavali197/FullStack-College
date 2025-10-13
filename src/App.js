@@ -22,19 +22,13 @@ import UseMemo from "./Components/Concept/UseMemo";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FormWithSession from "./Exam/Form";
 import Home from "./Exam/Home";
+import UseRef from "./Components/Concept/UseRef";
 
 function App() {
   return (
     <div className="App">
 
-
-<Router>
-      <Routes>
-        <Route path="/" element={<FormWithSession />} />
-        <Route path="/home" element={<Home />} />
-      </Routes>
-    </Router>
-
+    <UseRef />
 
       {/* <StylePractice />   */}
 
