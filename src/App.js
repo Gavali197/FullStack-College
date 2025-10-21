@@ -25,13 +25,15 @@ import Home from "./Exam/Home";
 import UseRef from "./Components/Concept/UseRef";
 import LoginForm2 from "./Mini Project/LoginForm2";
 import RegistrationForm from "./Mini Project/RegistrationForm";
+import FancyLogin from "./Mini Project/FancyLogin1";
 
 function App() {
   return (
     <div className="App">
-      {/* <LoginForm2 /> This Is small project part of the data */}
+    {/* <LoginForm2 /> This Is small project part of the data */}
+    <FancyLogin />
 
-    <RegistrationForm />
+    {/* <RegistrationForm /> */}
 
     {/* <UseRef /> */}
 

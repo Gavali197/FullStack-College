@@ -15,7 +15,7 @@ function LoginForm2() {
     } else if (form.password.length < 6) {
       seterror("Password Should Be at least 6");
     } else {
-        seterror("");
+      seterror("");
       alert("Form Submit Successfully...");
     }
   };
@@ -34,16 +34,26 @@ function LoginForm2() {
         <form onSubmit={handlesubmit}>
           <div className="email-grp">
             <label>Email</label>
-            <input type="text" name="email" value={form.email} onChange={onChange}/>
+            <input
+              type="text"
+              name="email"
+              value={form.email}
+              onChange={onChange}
+            />
           </div>
           <div className="password-grp">
             <label>Password</label>
-            <input type="password" name="password" value={form.password} onChange={onChange} />
+            <input
+              type="password"
+              name="password"
+              value={form.password}
+              onChange={onChange}
+            />
           </div>
           <div className="btn">
             <button id="btn">Login here</button>
           </div>
-           {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
         </form>
       </div>
     </div>

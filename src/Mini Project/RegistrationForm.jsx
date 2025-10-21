@@ -9,6 +9,8 @@ function RegistrationForm() {
     Cpassword: "",
   });
 
+  const [success, setSuccess] = useState("");
+
   const [error, seterror] = useState("");
 
   const change = (e) => {
@@ -29,8 +31,10 @@ function RegistrationForm() {
       seterror("Password Does Not Match ");
     } else {
       seterror("");
-      alert("Successfully Registration ✅");
+      setSuccess("Registration Successfully...");
     }
+
+    {success && <p style={{color:"green"}}>{success}</p>}
 
     // ✅ Show form data in console
       console.log("User Registered:", form);
