@@ -1,74 +1,74 @@
 import React, { useState } from "react";
-import "./Modern.css"; // we’ll create this next
+import './Modern.css';
 
-function FancyLogin() {
-  // ✅ Step 1: Manage form fields
-  const [form, setForm] = useState({ email: "", password: "" });
+function FancyLogin1() {
+  // ✅ Step 1: Define states
+  const [form, setform] = useState({ email: "", password: "" });
+  const [loading, setloading] = useState(false);
+  const [error, seterror] = useState("");
+  const [success, setsuccess] = useState("");
 
-  // ✅ Step 2: Manage messages
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-
-  // ✅ Step 3: Handle input change
+  // ✅ Step 2: Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    setform({ ...form, [name]: value });
   };
 
-  // ✅ Step 4: Handle form submit
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handlesubmit = (e) => {
+    e.prevantDefault();
 
-    // Validation logic
     if (!form.email || !form.password) {
-      setError("All fields are required ❗");
-      setSuccess("");
+      seterror("Please fill all fields ❗");
+      return;
     } else if (!form.email.includes("@")) {
-      setError("Enter a valid email ✉️");
-      setSuccess("");
-    } else if (form.password.length < 6) {
-      setError("Password must be at least 6 characters 🔐");
-      setSuccess("");
+      seterror("Enter valid email ✉️");
+      return;
     } else {
-      setError("");
-      setSuccess("🎉 Login Successful!");
-      setForm({ email: "", password: "" }); // clear form
+      seterror("");
     }
-  };
 
+    // ✅ Step 4: Simulate API call
+    setloading(true); // show loader
+    setsuccess("");
+
+    setTimeout(() => {
+      setloading(false); // hide loader after fake delay
+      setsuccess("🎉 Login Successful!");
+      setform({ email: "", password: "" }); // clear form
+    }, 2000); // simulate 2-second API response
+  };
   return (
     <div className="login-container">
-      <form onSubmit={handleSubmit} className="login-box">
-        <h2>🌐 Stylish Login</h2>
+      <form className="login-box" onSubmit={handlesubmit}>
+        <h2>🚀 Login (with Loading)</h2>
 
-        {/* Email Field */}
         <input
           type="text"
           name="email"
-          placeholder="Enter your email"
+          placeholder="Email"
           value={form.email}
           onChange={handleChange}
-          className={error && !form.email ? "error-input" : ""}
         />
-
-        {/* Password Field */}
         <input
           type="password"
           name="password"
-          placeholder="Enter your password"
+          placeholder="Password"
           value={form.password}
           onChange={handleChange}
-          className={error && !form.password ? "error-input" : ""}
         />
 
-        <button type="submit">Login</button>
+        {/* ✅ Disable button while loading */}
+        <button type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
 
-        {/* Conditional rendering for messages */}
-        {error && <p className="error-msg">{error}</p>}
-        {success && <p className="success-msg">{success}</p>}
+        {/* ✅ Conditional rendering */}
+        {loading && <div className="spinner"></div>}
+        {error && <p className="error">{error}</p>}
+        {success && <p className="success">{success}</p>}
       </form>
     </div>
   );
 }
 
-export default FancyLogin;
+export default FancyLogin1;
