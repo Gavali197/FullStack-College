@@ -13,7 +13,7 @@ function FancyLogin1() {
     const { name, value } = e.target;
     setform({ ...form, [name]: value });
   };
-
+  
   const handlesubmit = (e) => {
     e.prevantDefault();
 
