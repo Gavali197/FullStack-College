@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import './Modern.css';
+import React, { useState } from "react";
 
 function FancyLogin1() {
   // ✅ Step 1: Define states
@@ -13,7 +13,7 @@ function FancyLogin1() {
     const { name, value } = e.target;
     setform({ ...form, [name]: value });
   };
-  
+
   const handlesubmit = (e) => {
     e.prevantDefault();
 

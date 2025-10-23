@@ -71,4 +71,85 @@
 
 // export default RegistrationForm;
 
+import React, { useState } from "react";
+import "Modern.css";
 
+
+function RegistrationForm() {
+  const [form, setform] = useState({ email: "", password: "", phone: "" });
+  const [loading, setloading] = useState(false);
+  const [success, setsuccess] = useState("");
+  const [error, seterror] = useState(" ");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setform({ ...form, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if(!form.email || !form.password || !form.phone){
+      seterror("fill form");
+    }else if(!form.email.includes("@")) {
+      seterror("invalid email");
+    }else if(!form.password < 6){
+      seterror("Password Should be at least six charecters");
+    }else if(form.phone > 10 ){
+      seterror("Your Number Is not right");
+    }else{
+      seterror("");
+    }
+
+    setloading(true);
+    setsuccess("");
+
+    setTimeout(() => {
+      setloading(false);
+      setsuccess("registration success ");
+      setform({email: "", password: "", phone: ""});
+    }, 2000);
+
+  }
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+             <div className="container">
+        <div className="header">Registration Form</div>
+        email :
+        <input
+          type="text"
+          onChange={handleChange}
+          name="email"
+          value={form.email}
+        />
+        password :
+        <input
+          type="password"
+          onChange={handleChange}
+          name="password"
+          value={form.password}
+        />
+        phone :
+        <input
+          type="text"
+          onChange={handleChange}
+          name="phone"
+          value={form.phone}
+        />
+        <div className="sbtbtn">
+          <button type="submit" disabled={loading} >
+            {loading ? "logging in" : "login"}
+          </button>
+        </div>
+        {loading && <div className="spinner"></div>}
+        {error && <div className="error"></div>}
+        {success && <div className="success"></div>}
+      </div>
+      </form>
+    </div>
+  );
+}
+
+export default RegistrationForm;

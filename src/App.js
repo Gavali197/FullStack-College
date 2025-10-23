@@ -31,9 +31,9 @@ function App() {
   return (
     <div className="App">
     {/* <LoginForm2 /> This Is small project part of the data */}
-    <FancyLogin />
+    {/* <FancyLogin /> */}
 
-    {/* <RegistrationForm /> */}
+    <RegistrationForm />
 
     {/* <UseRef /> */}
 
