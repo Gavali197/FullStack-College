@@ -70,83 +70,98 @@
 // }
 
 // export default RegistrationForm;
-
 import React, { useState } from "react";
-import "Modern.css";
-
+import "./Modern.css";
 
 function RegistrationForm() {
-  const [form, setform] = useState({ email: "", password: "", phone: "" });
-  const [loading, setloading] = useState(false);
-  const [success, setsuccess] = useState("");
-  const [error, seterror] = useState(" ");
+  const [form, setForm] = useState({ email: "", password: "", phone: "" });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
+  // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setform({ ...form, [name]: value });
+    setForm({ ...form, [name]: value });
   };
 
+  // Form validation and submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(!form.email || !form.password || !form.phone){
-      seterror("fill form");
-    }else if(!form.email.includes("@")) {
-      seterror("invalid email");
-    }else if(!form.password < 6){
-      seterror("Password Should be at least six charecters");
-    }else if(form.phone > 10 ){
-      seterror("Your Number Is not right");
-    }else{
-      seterror("");
+    // Basic validation
+    if (!form.email || !form.password || !form.phone) {
+      setError("Please fill out all fields.");
+      setSuccess("");
+      return;
+    } else if (!form.email.includes("@")) {
+      setError("Invalid email format.");
+      setSuccess("");
+      return;
+    } else if (form.password.length < 6) {
+      setError("Password should be at least 6 characters long.");
+      setSuccess("");
+      return;
+    } else if (form.phone.length !== 10 || isNaN(form.phone)) {
+      setError("Phone number must be exactly 10 digits.");
+      setSuccess("");
+      return;
     }
 
-    setloading(true);
-    setsuccess("");
+    // If everything is valid
+    setError("");
+    setLoading(true);
+    setSuccess("");
 
     setTimeout(() => {
-      setloading(false);
-      setsuccess("registration success ");
-      setform({email: "", password: "", phone: ""});
-    }, 2000);
+      setLoading(false);
+      setSuccess("Registration successful 🎉");
+      setForm({ email: "", password: "", phone: "" });
 
-  }
+      console.log("Form Data Submitted:", form);
+    }, 2000);
+  };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-             <div className="container">
-        <div className="header">Registration Form</div>
-        email :
-        <input
-          type="text"
-          onChange={handleChange}
-          name="email"
-          value={form.email}
-        />
-        password :
-        <input
-          type="password"
-          onChange={handleChange}
-          name="password"
-          value={form.password}
-        />
-        phone :
-        <input
-          type="text"
-          onChange={handleChange}
-          name="phone"
-          value={form.phone}
-        />
-        <div className="sbtbtn">
-          <button type="submit" disabled={loading} >
-            {loading ? "logging in" : "login"}
-          </button>
+        <div className="container">
+          <div className="header">Registration Form</div>
+
+          <label>Email:</label>
+          <input
+            type="text"
+            onChange={handleChange}
+            name="email"
+            value={form.email}
+          />
+
+          <label>Password:</label>
+          <input
+            type="password"
+            onChange={handleChange}
+            name="password"
+            value={form.password}
+          />
+
+          <label>Phone:</label>
+          <input
+            type="text"
+            onChange={handleChange}
+            name="phone"
+            value={form.phone}
+          />
+
+          <div className="sbtbtn">
+            <button type="submit" disabled={loading}>
+              {loading ? "Registering..." : "Register"}
+            </button>
+          </div>
+
+          {loading && <div className="spinner"></div>}
+          {error && <div className="error">{error}</div>}
+          {success && <div className="success">{success}</div>}
         </div>
-        {loading && <div className="spinner"></div>}
-        {error && <div className="error"></div>}
-        {success && <div className="success"></div>}
-      </div>
       </form>
     </div>
   );

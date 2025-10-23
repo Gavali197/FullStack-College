@@ -1,5 +1,5 @@
-import './Modern.css';
 import React, { useState } from "react";
+import './Modern.css';
 
 function FancyLogin1() {
   // ✅ Step 1: Define states
