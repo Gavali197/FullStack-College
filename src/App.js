@@ -27,8 +27,41 @@ import LoginForm2 from "./Mini Project/LoginForm2";
 import RegistrationForm from "./Mini Project/RegistrationForm";
 import FancyLogin from "./Mini Project/FancyLogin1";
 
+
+function AppRepresent() { 
+   const [theme, setTheme] = useState("light");
+
+  // Function to toggle theme
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+ }
+}
+
 function App() {
+ 
+ AppRepresent();
+
   return (
+
+   <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div
+        style={{
+          height: "100vh",
+          backgroundColor: theme === "light" ? "#fff" : "#333",
+          color: theme === "light" ? "#000" : "#fff",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <h1>🌗 Theme Toggler using Context API</h1>
+        <ThemeButton />
+        <ThemeBox />
+      </div>
+    </ThemeContext.Provider>
+  );    
+
     <div className="App">
     {/* <LoginForm2 /> This Is small project part of the data */}
     {/* <FancyLogin /> */}
