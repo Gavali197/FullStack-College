@@ -26,55 +26,31 @@ import UseRef from "./Components/Concept/UseRef";
 import LoginForm2 from "./Mini Project/LoginForm2";
 import RegistrationForm from "./Mini Project/RegistrationForm";
 import FancyLogin from "./Mini Project/FancyLogin1";
-import ThemeContext from "./Components/Concept/ContexsApi/ThemeContext"
-
-
-function AppRepresent() { 
-   const [theme, setTheme] = useState("light");
-
-  // Function to toggle theme
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
- }
-}
+import ThemeContext from "./Components/Concept/ContexsApi/ThemeContext";
+import Usercontext from "./Components/Concept/ContexsApi/Usercontext";
+import UserFormContext from "./Components/Concept/UserFormContext";
+import Profile from "./Components/Concept/ContexsApi/Profile";
 
 function App() {
- 
- AppRepresent();
-
   return (
-
-   <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div
-        style={{
-          height: "100vh",
-          backgroundColor: theme === "light" ? "#fff" : "#333",
-          color: theme === "light" ? "#000" : "#fff",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <h1>🌗 Theme Toggler using Context API</h1>
-        <ThemeButton />
-        <ThemeBox />
-      </div>
-    </ThemeContext.Provider>
-  );    
-
     <div className="App">
-    {/* <LoginForm2 /> This Is small project part of the data */}
-    {/* <FancyLogin /> */}
+      {/* <LoginForm2 /> This Is small project part of the data */}
+      {/* <FancyLogin /> */}
 
-    <RegistrationForm />
+      <RegistrationForm />
 
-    {/* <UseRef /> */}
+      {/* <UseRef /> */}
 
       {/* <StylePractice />   */}
 
       <div className="Counter">{/* <CounterApp /> */}</div>
 
+      <Usercontext>
+        <div>
+          <UserFormContext />
+          <Profile />
+        </div>
+      </Usercontext>
       {/* <Products /> */}
 
       {/* <TodosApp /> */}
@@ -86,8 +62,6 @@ function App() {
       <div className="header">{/* <Header />   */}</div>
       {/* <StylePractice /> */}
       {/* <Clock /> */}
-
-    
 
       {/* <Fetch_PostList /> */}
 
@@ -115,7 +89,7 @@ function App() {
 
       {/* <LoginForm1 /> */}
     </div>
-);
+  );
 }
 
 export default App;
