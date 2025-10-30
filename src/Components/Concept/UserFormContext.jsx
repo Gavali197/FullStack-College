@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react'
-import Usercontext from './ContexsApi/Usercontext'
+import { UserContext } from './ContexsApi/Usercontext'
 
 const UserFormContext = () => {
-  const [setusername, setemail] = useContext(Usercontext);
+  const { setusername, setemail } = useContext(UserContext);
   const [inputusername, setinputusername] = useState("");
   const [inputemail, setinputemail] = useState("");
 
   const handlesubmit = (e) => {
-    e.prevantDefault();
+    e.preventDefault();
 
     setusername(inputusername);
     setemail(inputemail);
@@ -19,10 +19,11 @@ const UserFormContext = () => {
         <form onSubmit={handlesubmit}>
         <h2>Form Of context api:- </h2>
         username :
-        <input type="text" 
-        value={inputusername} 
+        <input type="text"
+        value={inputusername}
         onChange={(e)=>setinputusername(e.target.value)}/>
-        
+
+        email :
         <input type="text"
         value={inputemail}
         onChange={(e)=>setinputemail(e.target.value)} />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './Modern.css';
+// import './Modern.css';
 
 function FancyLogin1() {
   // ✅ Step 1: Define states
@@ -15,7 +15,7 @@ function FancyLogin1() {
   };
 
   const handlesubmit = (e) => {
-    e.prevantDefault();
+    e.preventDefault();
 
     if (!form.email || !form.password) {
       seterror("Please fill all fields ❗");

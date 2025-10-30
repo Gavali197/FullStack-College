@@ -71,7 +71,7 @@
 
 // export default RegistrationForm;
 import React, { useState } from "react";
-import "./Modern.css";
+// import "./Modern.css";
 
 function RegistrationForm() {
   const [form, setForm] = useState({ email: "", password: "", phone: "" });
@@ -122,45 +122,41 @@ function RegistrationForm() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div className="container">
-          <div className="header">Registration Form</div>
+    <div className="login-container">
+      <form className="login-box" onSubmit={handleSubmit}>
+        <h2>Registration Form</h2>
 
-          <label>Email:</label>
-          <input
-            type="text"
-            onChange={handleChange}
-            name="email"
-            value={form.email}
-          />
+        <label>Email:</label>
+        <input
+          type="text"
+          onChange={handleChange}
+          name="email"
+          value={form.email}
+        />
 
-          <label>Password:</label>
-          <input
-            type="password"
-            onChange={handleChange}
-            name="password"
-            value={form.password}
-          />
+        <label>Password:</label>
+        <input
+          type="password"
+          onChange={handleChange}
+          name="password"
+          value={form.password}
+        />
 
-          <label>Phone:</label>
-          <input
-            type="text"
-            onChange={handleChange}
-            name="phone"
-            value={form.phone}
-          />
+        <label>Phone:</label>
+        <input
+          type="text"
+          onChange={handleChange}
+          name="phone"
+          value={form.phone}
+        />
 
-          <div className="sbtbtn">
-            <button type="submit" disabled={loading}>
-              {loading ? "Registering..." : "Register"}
-            </button>
-          </div>
+        <button type="submit" disabled={loading}>
+          {loading ? "Registering..." : "Register"}
+        </button>
 
-          {loading && <div className="spinner"></div>}
-          {error && <div className="error">{error}</div>}
-          {success && <div className="success">{success}</div>}
-        </div>
+        {loading && <div className="spinner"></div>}
+        {error && <div className="error">{error}</div>}
+        {success && <div className="success">{success}</div>}
       </form>
     </div>
   );
