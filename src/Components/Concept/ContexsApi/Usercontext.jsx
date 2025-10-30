@@ -7,7 +7,9 @@ const Usercontext = ({Children}) => {
   const [email, setemail] = useState("")  
   return (
     <div>
-      
+      <UserContext.Provider value={{username, email, setusername, setemail}}>
+        {Children}
+      </UserContext.Provider>
     </div>
   )
 }
