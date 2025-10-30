@@ -117,7 +117,6 @@ function RegistrationForm() {
       setLoading(false);
       setSuccess("Registration successful 🎉");
       setForm({ email: "", password: "", phone: "" });
-
       console.log("Form Data Submitted:", form);
     }, 2000);
   };
