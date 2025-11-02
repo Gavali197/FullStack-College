@@ -18,15 +18,10 @@ import Home from "./Exam/Home";
 import FormWithSession from "./Exam/Form";
 
 function App() {
-  const [theme, setTheme] = React.useState("light");
-
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
-
+  
   return (
     <div className="app">
-                  
+                      
     </div>
   );
 }
