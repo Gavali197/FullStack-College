@@ -2,13 +2,13 @@ import React, { useState } from "react";
 // import './Modern.css';
 
 function FancyLogin1() {
-  
+  // ✅ Step 1: Define states
+  const [form, setform] = useState({ email: "", password: "" });
+  const [loading, setloading] = useState(false);
+  const [error, seterror] = useState("");
+  const [success, setsuccess] = useState("");
 
-  // ✅ Step 2: Handle input change
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setform({ ...form, [name]: value });
-  };
+  
 
   const handlesubmit = (e) => {
     e.preventDefault();
