@@ -27,7 +27,16 @@ function FancyLogin1() {
       seterror("");
     }
 
-  
+    // ✅ Step 4: Simulate API call
+    setloading(true); // show loader
+    setsuccess("");
+
+    setTimeout(() => {
+      setloading(false); // hide loader after fake delay
+      setsuccess("🎉 Login Successful!");
+      setform({ email: "", password: "" }); // clear form
+    }, 2000); // simulate 2-second API response
+  };
   return (
     <div className="login-container">
       <form className="login-box" onSubmit={handlesubmit}>
