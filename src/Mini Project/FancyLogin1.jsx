@@ -8,7 +8,11 @@ function FancyLogin1() {
   const [error, seterror] = useState("");
   const [success, setsuccess] = useState("");
 
-  
+  // ✅ Step 2: Handle input change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setform({ ...form, [name]: value });
+  };
 
   const handlesubmit = (e) => {
     e.preventDefault();
@@ -23,16 +27,7 @@ function FancyLogin1() {
       seterror("");
     }
 
-    // ✅ Step 4: Simulate API call
-    setloading(true); // show loader
-    setsuccess("");
-
-    setTimeout(() => {
-      setloading(false); // hide loader after fake delay
-      setsuccess("🎉 Login Successful!");
-      setform({ email: "", password: "" }); // clear form
-    }, 2000); // simulate 2-second API response
-  };
+  
   return (
     <div className="login-container">
       <form className="login-box" onSubmit={handlesubmit}>
