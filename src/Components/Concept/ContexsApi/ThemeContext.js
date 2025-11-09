@@ -1,9 +1,5 @@
-import React from 'react'
+const theame = {
+  light : {backgraund : '#ffffff', color: '#000000' },
+  dark : {backgraund : '#000000', color:'#ffffff'}
+};
 
-function ThemeContext() {
-  return (
-    <div>ThemeContext</div>
-  )
-}
-
-export default ThemeContext
