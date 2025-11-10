@@ -19,6 +19,7 @@ import LoginForm2 from "./Mini Project/LoginForm2";
 import FancyLogin from "./Mini Project/FancyLogin1";
 import Home from "./Exam/Home";
 import FormWithSession from "./Exam/Form";
+import ReactMemo from "./Hooks/ReactMemo";
 
 const ThemeToggleButton = () => {
   const { theme, toggleTheme } = useTheme();
@@ -58,9 +59,13 @@ const AppContent = () => {
 function App() {
   return (
     <div className="app">
+
+<ReactMemo />
+
+{/*       
       <ThemeProvider>
         <AppContent />
-      </ThemeProvider>
+      </ThemeProvider> */}
     </div>
   );
 }
