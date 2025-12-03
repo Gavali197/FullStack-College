@@ -35,7 +35,9 @@ Lazy Loading = load only when required.
 
 👉 Example: Only load the ProductDetails component when user opens /product/:id.**/
 
-import { useParams } from "react-router-dom";
+
+ /** 
+  * import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch"; // your custom hook
 
 function ProductDetails() {
@@ -59,3 +61,5 @@ function ProductDetails() {
 }
 
 export default ProductDetails;
+
+**/
