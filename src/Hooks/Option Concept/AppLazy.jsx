@@ -19,3 +19,18 @@ function App() {
 }
 
 export default App;
+
+
+
+
+/**1️⃣ What is Lazy Loading?
+
+Normally React loads all components at startup, even if they are not visible.
+
+❌ Slow
+❌ Big initial bundle
+❌ Bad for mobile networks
+
+Lazy Loading = load only when required.
+
+👉 Example: Only load the ProductDetails component when user opens /product/:id.**/
