@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.css";
 
 // Contexts
@@ -22,6 +22,7 @@ import FormWithSession from "./Exam/Form";
 import ReactMemo from "./Hooks/ReactMemo/ReactMemo";
 import Parent from "./Hooks/useCallback/Parents";
 import UseMemo from "./Hooks/useMemo/UseMemo";
+import AuthLogin from "./Components/AuthLogin.jsx";
 
 const ThemeToggleButton = () => {
   const { theme, toggleTheme } = useTheme();
@@ -61,15 +62,12 @@ const AppContent = () => {
 function App() {
   return (
     <div className="app">
+      <BrowserRouter>
+      <Routes>
+      <Route path="/login" element={<AuthLogin />} />
 
-<UseMemo />
-
-{/* <ReactMemo /> */}
-
-{/*       
-      <ThemeProvider>
-        <AppContent />
-      </ThemeProvider> */}
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import { AuthContext } from "./Concept/ContexsApi/AuthContext";
+import { AuthContext, AuthProvide } from "./Concept/ContexsApi/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const AuthLogin = () => {
-  const { login } = useContext(AuthContext);
+  const { login } = useContext(AuthProvide);
   const navigate = useNavigate();
 
   const [form, setform] = useState({ email: "", password: "" });
