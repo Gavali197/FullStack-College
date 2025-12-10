@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
 import "./App.css";
 
 // Contexts
@@ -23,7 +28,8 @@ import ReactMemo from "./Hooks/ReactMemo/ReactMemo";
 import Parent from "./Hooks/useCallback/Parents";
 import UseMemo from "./Hooks/useMemo/UseMemo";
 import AuthLogin from "./Components/AuthLogin.jsx";
-import Registration from "./Auth/AuthRoleBase/REgistration.jsx";
+import Registration from "./Auth/AuthRoleBase/Registration.jsx";
+import SLogin from "./Auth/AuthRoleBase/SLogin.jsx";
 
 const ThemeToggleButton = () => {
   const { theme, toggleTheme } = useTheme();
@@ -64,10 +70,10 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-      <Routes>
-      <Route path="/login" element={<AuthLogin />} />
-      <Route path="/" element={<Registration />} />
-      </Routes>
+        <Routes>
+          <Route path="/login" element={<SLogin />} />
+          <Route path="/" element={<Registration />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );

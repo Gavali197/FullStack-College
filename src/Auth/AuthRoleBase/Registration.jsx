@@ -3,14 +3,14 @@ import { registerUser } from "./authFunction";
 import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
-    const Navigate = useNavigate();
+  const Navigate = useNavigate();
 
-    const [form, setform] = useState({ username: "", email: "", password: "" });
+  const [form, setform] = useState({ username: "", email: "", password: "" });
   const [error, seterror] = useState("");
+  const [success, setsucess] = useState("");
 
   const handleChange = (e) => {
-    const { name, value } = e.target.value;
-    setform({ ...form, [name]: value });
+    setform({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
@@ -23,12 +23,13 @@ const Registration = () => {
     }
 
     const result = registerUser(form);
-    
+
     if (!result.success) {
-        seterror(result.message);
-        return;
+      seterror(result.message);
+      return;
     }
-    
+
+    setsucess("Registration Successful! You can now login.");
     Navigate("/login");
     setform({ username: "", email: "", password: "" });
   };
