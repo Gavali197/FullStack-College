@@ -6,7 +6,7 @@ const SLogin = () => {
   const navigate = useNavigate();
   const [form, setform] = useState({ email: "", password: "" });
   const [error, seterror] = useState("");
-  const [success, setsucess] = useState("");
+  // const [success, setsucess] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -49,6 +49,7 @@ const SLogin = () => {
           value={form.password}
         />
         <button type="submit">Login</button>
+        {error && <p style={{color:"red"}}>{error}</p>}
       </form>
     </>
   );

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export const registerUser = (userData) => {
   const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -22,7 +22,7 @@ export const loginUser = (email, password, remember) => {
 
   if (!user) {
     return { success: false, message: "Invalid Email or password" };
-    alert("User Are Not exit register user");
+    // alert("User Are Not exit register user");
   }
 
   localStorage.setItem("currentUser", JSON.stringify(user));
