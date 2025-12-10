@@ -30,6 +30,7 @@ import UseMemo from "./Hooks/useMemo/UseMemo";
 import AuthLogin from "./Components/AuthLogin.jsx";
 import Registration from "./Auth/AuthRoleBase/Registration.jsx";
 import SLogin from "./Auth/AuthRoleBase/SLogin.jsx";
+import Dashbaord from "./Auth/AuthRoleBase/Dashbaord.jsx";
 
 const ThemeToggleButton = () => {
   const { theme, toggleTheme } = useTheme();
@@ -72,7 +73,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<SLogin />} />
-          <Route path="/" element={<Registration />} />
+          <Route path="/dashboard" element={<Dashbaord />} />
+           <Route path="/" element={<Registration />} />
         </Routes>
       </BrowserRouter>
     </div>

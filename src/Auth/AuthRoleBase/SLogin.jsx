@@ -16,12 +16,14 @@ const SLogin = () => {
       seterror("Fill All Field");
     }
 
-    const result = loginUser(form);
+    const result = loginUser(form.email, form.password);
 
     if (!result.success) {
       seterror(result.message);
       return;
     }
+
+    seterror("");
     navigate("/dashboard");
   };
 
