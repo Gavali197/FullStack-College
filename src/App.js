@@ -23,6 +23,7 @@ import ReactMemo from "./Hooks/ReactMemo/ReactMemo";
 import Parent from "./Hooks/useCallback/Parents";
 import UseMemo from "./Hooks/useMemo/UseMemo";
 import AuthLogin from "./Components/AuthLogin.jsx";
+import Registration from "./Auth/AuthRoleBase/REgistration.jsx";
 
 const ThemeToggleButton = () => {
   const { theme, toggleTheme } = useTheme();
@@ -65,7 +66,7 @@ function App() {
       <BrowserRouter>
       <Routes>
       <Route path="/login" element={<AuthLogin />} />
-
+      <Route path="/" element={<Registration />} />
       </Routes>
       </BrowserRouter>
     </div>
