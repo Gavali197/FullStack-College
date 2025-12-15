@@ -10,5 +10,5 @@ we build project there all concept or practice apply in project
 
 like amazon clone, youtube Clone where i pass api or make static but have effect,validation 
 
-
+enhance frontend using use there feture use lazy loading, context API 
 
