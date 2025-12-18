@@ -1,10 +1,7 @@
+This is my journy with react i am complete my whole React in 30-45 days
 
+thank for youtubers who help me in react journy 
 
-this is my last commit of the react, goal was get intership
-
-we build project there all concept or practice apply in project 
-
-like amazon clone, youtube Clone where i pass api or make static but have effect,validation 
-
+Lot of the feture and concept are learn in react
 enhance frontend using use there feture use lazy loading, context API 
 
