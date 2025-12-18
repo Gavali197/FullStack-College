@@ -1,8 +1,4 @@
-This is my journy with react i am complete my whole React in 30-45 days
 
-thank for youtubers who help me in react journy 
-
-Lot of the feture and concept are learn in react
 
 this is my last commit of the react, goal was get intership
 
