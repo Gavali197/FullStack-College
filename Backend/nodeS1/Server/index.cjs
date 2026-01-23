@@ -18,11 +18,17 @@ const server = http.createServer((req, res)=> {
 
 server.listen(5000, ()=>{
     console.log("Server running 5000 port");
-})
+}); 
 
 const express = require("express");
 const app = express();
 
-app.get("/app", (req, res)=>{
-res.send("Hello world post on there server");
-})
+// Define a route
+app.get("/app", (req, res) => {
+    res.send("Hello world post on there server");
+});
+
+// Start the server
+app.listen(5000, () => {
+    console.log("Server running on port 5000");
+});
