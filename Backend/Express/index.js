@@ -10,6 +10,11 @@ app.get("/user", (req, res)=>{
     })
     // res.send("Hello world my frist server are running");
 })
+    app.use(express.json());
+
+app.post("/register", (req, res) => {
+ res.send("hello");
+});
 
 app.listen(5000, ()=>{
     console.log("Server Running 5000 port");
