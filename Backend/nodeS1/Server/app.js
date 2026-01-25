@@ -5,4 +5,7 @@ app.use(express.json());
 
 app.use("/api/products", products);
 
+const errHandle = require("./Middleware/errorHandler");
+app.use(errHandle);
+
 module.exports = app;
