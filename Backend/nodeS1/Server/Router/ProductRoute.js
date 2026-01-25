@@ -6,6 +6,7 @@ const {
     addProduct,
     deleteProduct
 } = require("../controller/ProductConttroller");
+
 const { route } = require("../app");
 
 router.get("/", getProduct);
