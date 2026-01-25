@@ -1,27 +1,27 @@
 let product = [
     {
         id: 1,
-        name:"shirt",
-        price:350
+        name: "shirt",
+        price: 350
     },
 
     {
         id: 1,
-        name:"watch",
-        price:470
+        name: "watch",
+        price: 470
     },
 
     {
         id: 3,
-        name:"chocklate",
-        price:200
+        name: "chocklate",
+        price: 200
     }
 
 ]
 
 
 
-exports.getProduct = (req, res)=>{
+exports.getProduct = (req, res) => {
     res.json(product);
 }
 
@@ -33,14 +33,14 @@ exports.addProduct = (req, res) => {
         message: "Product added Successfully",
         product
     });
-} 
+}
 
-exports.deleteProduct = (req, res)=>{
+exports.deleteProduct = (req, res) => {
     const id = parseInt(req.params.id);
-    product = product.filter(p=> p.id !== id);
+    product = product.filter(p => p.id !== id);
 
     res.json({
-        message : "Product Delete Successfully",
+        message: "Product Delete Successfully",
         product
     })
 }
