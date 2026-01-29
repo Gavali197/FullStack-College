@@ -19,6 +19,7 @@
 
 // ]
 
+const product = require("../models/product");
 const Product = require("../models/product");
 
 exports.getProduct = async(req, res, next) => {
@@ -58,3 +59,36 @@ exports.deleteProduct = async (req, res, next) => {
     next(error);
   }
 };
+
+
+exports.updateProduct = async(req, res, next) => {
+  try{
+    await Product.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new : true,
+        runValidators :true
+      }
+    );
+
+
+    if(!this.updateProduct){
+      return res.status(401).json( {
+        message : "Not Found"
+      })
+
+      // res.json({
+      //   message:"Product Update Successfully",
+      //   product: this.updateProduct
+      // });
+
+    }
+     res.json({
+        message:"Product Update Successfully",
+        product: this.updateProduct
+      });
+  }catch(err){
+      next(err + "Issue In Update")
+    }
+}
