@@ -51,14 +51,48 @@ exports.addProduct = async (req, res, next) => {
 };
 
 // DELETE
-exports.deleteProduct = async (req, res, next) => {
-  try {
-    await Product.findByIdAndDelete(req.params.id);
-    res.json({ message: "Product deleted" });
-  } catch (error) {
-    next(error);
-  }
-};
+// exports.deleteProduct = async (req, res, next) => {
+//   try {
+//     await Product.findByIdAndDelete(req.params.id);
+//     res.json({ message: "Product deleted" });
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
+
+
+exports.deleteProduct = async(req, res, next) => {
+  try{
+    await Product.findByIdAndDelete(
+      req.params.id,
+      req.body,
+      {
+        new : true,
+        runValidators :true
+      }
+    );
+
+
+    if(!this.deleteProduct){
+      return res.status(401).json( {
+        message : "Not Found"
+      })
+
+      // res.json({
+      //   message:"Product Update Successfully",
+      //   product: this.updateProduct
+      // });
+
+    }
+     res.json({
+        message:"Product delete Successfully",
+        product: this.deleteProduct
+      });
+  }catch(err){
+      next(err + "Issue In Update")
+    }
+}
 
 
 exports.updateProduct = async(req, res, next) => {
