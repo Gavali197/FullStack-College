@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import { data } from "react-router-dom";
 
-const Insert = () => {
+const Insert =async () => {
   const [form, setform] = useState({ name: "", age: "", city: "" });
   const [error, seterror] = useState("");
-  const handleInsert = (e) => {
+  const handleInsert = async(e) => {
     e.preventDefault();
 
     if (!form.name || !form.age || !form.city) {
@@ -18,7 +19,32 @@ const Insert = () => {
 
     console.log(form);
     
+    
+  try{
+ seterror(" ");
+ const res = await fetch("http://localhost:4000/userlist/api/v2/post", {
+    method : "POST", 
+    headers: {
+        "Content-type" : "application/json",
+    },
+    body : JSON.stringify(form)
+ })
+
+ const data = await res.json();
+
+ if(res.ok){
+    alert("data inserted");
+    setform({name: "", age:"", city: ""})
+ }else{
+    seterror(data.message || "failed to inserted data")
+ }
+  }catch(err){
+    seterror(err + "Server error: Make sure backend is running and CORS is enabled")
+  }
+
+
   };
+
 
   const onchange = (e) => {
       const { name, value } = e.target;
