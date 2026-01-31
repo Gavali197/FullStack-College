@@ -5,7 +5,7 @@ const app = express();
 const route = require("./Routes/userRouter");
 
 app.use(express.json());
-app.use("/user/api");
+app.use("/userlist/api/v2", route);
 
 const PORT = 4000
 
