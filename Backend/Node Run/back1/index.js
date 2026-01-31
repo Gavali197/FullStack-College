@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoDb = require("./utils/Db");
 const app = express();
-const cors = require("cors");
+// const cors = require("cors");
 
 app.use(express.json())
 
@@ -13,7 +13,7 @@ app.listen(PORT, ()=>{
 
 mongoDb()
 
-app.use(cors({
-    origin: "http://localhost:4000",
-    credentials:true
-}));
+// app.use(cors({
+//     origin: "http://localhost:4000",
+//     credentials:true
+// }));
