@@ -1,5 +1,5 @@
 // import './App.css'
-import Register from "./Component/Register";
+// import Register from "./Component/Register";
 import Insert from "./Component/insert";
 import Delete from "./Component/Delete";
 import Update from "./Component/Update";
