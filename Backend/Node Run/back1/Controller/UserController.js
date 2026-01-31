@@ -32,7 +32,7 @@ const postuser = await user.create(req.body);
 exports.updateUser = async (req, res, next) => {
     try{
         await user.findByIdAndUpdate(
-            req.param.id,
+            req.params.id,
             req.body,
             {
                 new : true,
@@ -60,7 +60,7 @@ exports.updateUser = async (req, res, next) => {
 exports.deleteUser = async (req, res, next) => {
     try{
         await user.findByIdAndDelete(
-            req.param.id,
+            req.params.id,
             req.body,
             {
                 new : true,
