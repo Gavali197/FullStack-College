@@ -1,8 +1,12 @@
 import React from 'react'
 
 const view = () => {
+  
   return (
-    <div>view</div>
+    <div>
+      <h1>User List :- </h1>
+
+    </div>
   )
 }
 
