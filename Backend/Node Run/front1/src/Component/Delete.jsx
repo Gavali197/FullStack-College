@@ -6,7 +6,7 @@ const Delete = () => {
   const [user, setuser ] = useState([]); 
   const deleteUser = async () => {
     try{
-      const res = await fetch("http://localhost:4000/userlist/api/v2/delete/:id");
+      const res = await fetch("http://localhost:4000/userlist/api/v2/get");
       const result = await res.json();
      setuser(result);
     }catch(err){
