@@ -15,7 +15,7 @@ const Delete = () => {
   }
 
   useEffect(()=>{
-    deleteUser()
+   deleteUser()
   }, [])
 
   const deleteUsers = async(id) => {
