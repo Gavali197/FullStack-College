@@ -31,7 +31,7 @@ const postuser = await user.create(req.body);
 
 exports.updateUser = async (req, res, next) => {
     try{
-        await user.findByIdAndUpdate(
+      const updatedUser =  await user.findByIdAndUpdate(
             req.params.id,
             req.body,
             {
@@ -40,7 +40,7 @@ exports.updateUser = async (req, res, next) => {
             }
         );
 
-        if(!this.updateUser){
+        if(!updatedUser){
             return res.status(401).json({
                 message : "not found"
             })
@@ -48,7 +48,7 @@ exports.updateUser = async (req, res, next) => {
 
         res.json({
             message : "user update successfully",
-            user : this.updateUser
+            user : updatedUser,
         })
     }catch(err){
         next(err + "inssue in update")

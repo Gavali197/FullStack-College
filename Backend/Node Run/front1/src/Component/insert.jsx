@@ -45,6 +45,11 @@ const Insert = () => {
     }
   };
 
+
+  const handleClick = (user) => {
+    
+  }
+
   const onchange = (e) => {
     const { name, value } = e.target;
     setform({ ...form, [name]: value });
