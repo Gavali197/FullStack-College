@@ -19,16 +19,29 @@ const Delete = () => {
   //  GetUser()
   // }, [])
 
+    const getUsers = async () => {
+    try {
+      const res = await fetch("http://localhost:4000/userlist/api/v2/get");
+      const result = await res.json();
+      setuser(result);
+    } catch (err) {
+      console.error("Error fetching users:", err);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   const deleteUsers = async(id) => {
     try{
       await fetch("http://localhost:4000/userlist/api/v2/delete/${id}", {
         method : "DELETE",
       })
 
-      setuser(user.filter(users => users._id !== id))
-    }catch(err){
-      console.error("Delete failed", err);
-      return
+     setuser((prevUsers) => prevUsers.filter((u) => u._id !== id));
+    } catch (err) {
+      console.error("Delete failed:", err);
     }
   }
   return (
