@@ -4,19 +4,20 @@ import { useEffect, useState } from "react";
 
 const Delete = () => {
   const [user, setuser ] = useState([]); 
-  const deleteUser = async () => {
-    try{
-      const res = await fetch("http://localhost:4000/userlist/api/v2/get");
-      const result = await res.json();
-     setuser(result);
-    }catch(err){
-      console.error("error from delete user",err);
-    }
-  }
 
-  useEffect(()=>{
-   deleteUser()
-  }, [])
+  // const GetUser = async () => {
+  //   try{
+  //     const res = await fetch("http://localhost:4000/userlist/api/v2/get");
+  //     const result = await res.json();
+  //    setuser(result);
+  //   }catch(err){
+  //     console.error("error from delete user",err);
+  //   }
+  // }
+
+  // useEffect(()=>{
+  //  GetUser()
+  // }, [])
 
   const deleteUsers = async(id) => {
     try{
