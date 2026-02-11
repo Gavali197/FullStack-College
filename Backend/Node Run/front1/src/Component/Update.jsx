@@ -35,13 +35,13 @@ const Update = () => {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-      }
+      },
     );
 
     const data = await res.json();
 
     setUsers((prev) =>
-      prev.map((u) => (u._id === editingUser ? data.user : u))
+      prev.map((u) => (u._id === editingUser ? data.user : u)),
     );
 
     setEditingUser(null);
