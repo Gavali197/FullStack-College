@@ -1,0 +1,139 @@
+1. What is Node.js?
+
+Node.js is a JavaScript runtime that allows us to run JavaScript outside the browser, mainly on the server.
+
+2. Is Node.js a language or framework?
+
+No. Node.js is a runtime environment, not a language or framework.
+
+3. Why is Node.js fast?
+
+Because it uses non-blocking I/O and an event-driven architecture.
+
+4. What is the event loop?
+
+The event loop handles asynchronous operations and allows Node.js to execute tasks without blocking the main thread.
+
+5. What are Node core modules?
+
+Built-in modules like fs, http, path, os that don’t require installation.
+
+6. What is npm?
+
+npm is a package manager used to install and manage Node.js libraries.
+
+7. What is Express.js?
+
+Express.js is a Node.js framework used to build web servers and REST APIs easily.
+
+8. Why do we use Express instead of http module?
+
+Express reduces boilerplate code and provides easy routing, middleware, and request handling.
+
+9. What is middleware?
+
+Middleware is a function that runs between request and response.
+
+10. Why do we use express.json()?
+
+To read JSON data sent from the client in req.body.
+
+11. Difference between GET and POST?
+
+GET is used to fetch data, POST is used to send data to the server.
+
+12. What is REST API?
+
+A REST API follows standard HTTP methods like GET, POST, PUT, DELETE to perform CRUD operations.
+
+13. Why do we separate routes and controllers?
+
+To keep code clean, readable, and easy to maintain.
+
+14. What is the role of routes?
+
+Routes define the API URLs and HTTP methods.
+
+15. What is the role of controllers?
+
+Controllers contain the business logic of the application.
+
+16. Difference between app.js and server.js?
+
+app.js configures middleware and routes, server.js starts the server.
+
+17. What is centralized error handling?
+
+Handling all errors in one middleware instead of repeating try-catch everywhere.
+
+18. What is MongoDB?
+
+MongoDB is a NoSQL database that stores data in JSON-like documents.
+
+19. Difference between SQL and MongoDB?
+
+SQL uses tables and rows, MongoDB uses collections and documents.
+
+20. What is Mongoose?
+
+Mongoose is an ODM library used to connect Node.js with MongoDB.
+
+21. What is a Schema?
+
+Schema defines the structure and rules of a document.
+
+22. What is a Model?
+
+A Model is used to interact with a MongoDB collection.
+
+23. Why do we use async/await with MongoDB?
+
+Database operations are asynchronous and take time.
+
+24. Why is backend validation important?
+
+Because frontend validation can be bypassed.
+
+25. What is required in schema?
+
+It ensures that a field must be provided before saving data.
+
+26. What is unique?
+
+It prevents duplicate values in a field.
+
+27. What is Mongoose middleware?
+
+Functions that run automatically before or after database operations.
+
+28. Difference between save() and findByIdAndUpdate()?
+
+save() triggers middleware, findByIdAndUpdate() does not by default.
+
+29. Why use runValidators: true?
+
+To apply schema validation during update operations.
+
+30. What is authentication?
+
+Process of verifying user identity.
+
+31. Why do we hash passwords?
+
+To protect passwords even if the database is hacked.
+
+32. What is bcrypt?
+
+A library used to hash and compare passwords securely.
+
+33. What is JWT?
+
+JSON Web Token used for secure user authentication.
+
+34. Why JWT is stateless?
+
+It does not store session data on the server.
+
+35. Why use select:false for password?
+
+To prevent password from being returned in API responses.
