@@ -137,3 +137,49 @@ It does not store session data on the server.
 35. Why use select:false for password?
 
 To prevent password from being returned in API responses.
+
+36. What is authorization?
+
+Determining what actions a user is allowed to perform.
+
+37. Difference between 401 and 403?
+
+401 = not logged in
+403 = logged in but not allowed
+
+38. What is RBAC?
+
+Role-Based Access Control.
+
+39. Why role check should be backend side?
+
+Frontend checks can be easily bypassed.
+
+40. Why use middleware for authorization?
+
+To reuse role logic and keep controllers clean.
+
+41. What is CORS?
+
+Browser security mechanism that restricts cross-origin requests.
+
+42. Why CORS error occurs?
+
+Frontend and backend run on different origins.
+
+43. How do you fix CORS?
+
+By enabling CORS middleware in backend.
+
+44. Why use Axios instead of fetch?
+
+Axios has simpler syntax and supports interceptors.
+
+45. What is interceptor?
+
+A function that runs before sending requests or receiving responses.
+
+46. How do you send JWT from frontend?
+
+Using Authorization header:
+Bearer <token>
