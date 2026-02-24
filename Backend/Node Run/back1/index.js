@@ -3,6 +3,7 @@ const mongoDb = require("./utils/Db");
 const app = express();
 const cors = require("cors");
 const route = require("./Routes/userRouter");
+const errorhandler = require("./Middleware/error");
 
 const PORT = 4000;
 
@@ -14,6 +15,7 @@ app.use(cors({
     credentials: true
 }));
 
+app.use(errorhandler)
 app.use(express.json());
 app.use("/userlist/api/v2", route);
 

@@ -19,7 +19,7 @@ exports.getAdmin = async(req, res, next) => {
 
 exports.postAdmin = async (req, res, next) =>  {
     try{
-    const createAdmin = await admin.create();
+    const createAdmin = await admin.create(req.body);
     if(!createAdmin){
         return res.status(401).json({
             message : "Some error From Post Side"
