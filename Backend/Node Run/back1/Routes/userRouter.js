@@ -7,7 +7,12 @@ const {
     updateUser,
     deleteUser
 } = require("../Controller/UserController");
-// const { get } = require("mongoose");
+
+
+const {getAdmin, postAdmin} = require("../Controller/AdminController")
+
+router.get("/getAdmin", getAdmin);
+router.post("/postAdmin", postAdmin);
 
 router.get("/get", getuser);
 router.post("/post", postUser);

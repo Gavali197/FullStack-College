@@ -1,3 +1,10 @@
+/*
+! We try To used same method for both module (Admin / User)
+*/
+
+
+
+/*
 const express = require("express")
 const router = express.Router();
 
@@ -7,3 +14,4 @@ router.get("/get", getAdmin);
 router.post("/post", postAdmin);
 
 module.exports = router
+*/
