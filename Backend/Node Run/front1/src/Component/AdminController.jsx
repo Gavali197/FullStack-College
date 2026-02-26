@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { deleteAdmin } from "../../../back1/Controller/AdminController";
 
 const AdminController = () => {
   const [form, setform] = useState({ name: "", age: "", city: "" });
@@ -20,17 +21,18 @@ const AdminController = () => {
       seterror("");
     }
 
-    const isDuplicate = data.find((user)=>(
-        user.name.toLowerCase() === form.name.toLowerCase() && (user.age === form.age || user.city.toLowerCase() === form.city.toLowerCase()) 
-    ))
+    const isDuplicate = data.find(
+      (user) =>
+        user.name.toLowerCase() === form.name.toLowerCase() &&
+        (user.age === form.age ||
+          user.city.toLowerCase() === form.city.toLowerCase()),
+    );
 
-    if(isDuplicate){
-      seterror("User All ready Register")
+    if (isDuplicate) {
+      seterror("User All ready Register");
       setsuccess(" ");
-      return
+      return;
     }
-
-    
 
     console.log(form);
 
@@ -65,14 +67,12 @@ const AdminController = () => {
     const { name, value } = e.target;
     setform({ ...form, [name]: value });
   };
-/*
+  /*
 ! Get Data From Server handle Server Request
 */
   const getdata = async () => {
     try {
-      const res = await fetch(
-        "http://localhost:4000/userlist/api/v2/getAdmin",
-      );
+      const res = await fetch("http://localhost:4000/userlist/api/v2/getAdmin");
       const result = await res.json();
       setdata(result);
     } catch (err) {
@@ -84,6 +84,19 @@ const AdminController = () => {
     getdata();
   }, []);
 
+
+  const DeleteUser = async (id) => {
+    try{
+      await fetch(`http://localhost:4000/userlist/api/v2/deleteAdmin/${id}`, {
+        method : "DELETE",
+      });
+      setdata((prevUser)=> prevUser.filter((u)=> u._id !== id))
+    }catch(err){
+      console.error(err)
+    }
+  }
+
+  ``
   return (
     // <div></div>
     <>
@@ -123,6 +136,7 @@ const AdminController = () => {
               <th>Name</th>
               <th>Age</th>
               <th>City</th>
+              <th>Delete Data</th>
             </tr>
           </thead>
 
@@ -132,6 +146,12 @@ const AdminController = () => {
                 <td>{item.name}</td>
                 <td>{item.age}</td>
                 <td>{item.city}</td>
+                <td>
+                  {" "}
+                  <div className="deleteBtn">
+                    {/* <button onClick={() => deleteAdmin(item.index)}>Delete</button> */}
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>

@@ -30,3 +30,31 @@ exports.postAdmin = async (req, res, next) =>  {
         next(err)
     }
 }
+
+
+
+exports.deleteAdmin = async (req, res, next) => {
+    try{
+        await admin.findByIdAndDelete(
+            req.params.id,
+            req.body,
+            {
+                new : true,
+                runValidators : true
+            }
+        );
+
+        if(!this.deleteUser){
+            return res.status(401).json({
+                message : "not found"
+            })
+        }
+
+        res.json({
+            message : "User delete successfully",
+            user : this.deleteUser
+        })
+    }catch(err){
+        next(err + "inssue in update")
+    }
+}
