@@ -24,6 +24,11 @@ const AdminController = () => {
         user.name.toLowerCase() === form.name.toLowerCase() && (user.age === form.age || user.city.toLowerCase() === form.city.toLowerCase()) 
     ))
 
+    if(isDuplicate){
+      seterror("User All ready Register")
+      setsuccess(" ");
+      return
+    }
 
     
 
