@@ -15,9 +15,17 @@ const AdminController = () => {
     e.preventDefault();
     if (!form.name || !form.age || !form.city) {
       seterror("Fill All Filed");
+      return;
     } else {
       seterror("");
     }
+
+    const isDuplicate = data.find((user)=>(
+        user.name.toLowerCase() === form.name.toLowerCase() && (user.age === form.age || user.city.toLowerCase() === form.city.toLowerCase()) 
+    ))
+
+
+    
 
     console.log(form);
 
