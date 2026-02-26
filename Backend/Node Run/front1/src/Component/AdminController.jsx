@@ -1,159 +1,181 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { deleteAdmin } from "../../../back1/Controller/AdminController";
+import React, { useEffect, useState } from "react";
 
 const AdminController = () => {
-  const [form, setform] = useState({ name: "", age: "", city: "" });
-  const [error, seterror] = useState("");
-  const [success, setsuccess] = useState("");
-  const [data, setdata] = useState([]);
+  const [form, setForm] = useState({ name: "", age: "", city: "" });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [data, setData] = useState([]);
 
-  /*
-! Insert user Form Inserthandler Function
+  const API = "http://localhost:4000/userlist/api/v2";
+/*
+! Insert Data From User
 */
   const insertHandle = async (e) => {
     e.preventDefault();
+
+    // validation
     if (!form.name || !form.age || !form.city) {
-      seterror("Fill All Filed");
+      setError("Please fill all fields");
       return;
-    } else {
-      seterror("");
     }
 
+    // duplicate check
     const isDuplicate = data.find(
       (user) =>
         user.name.toLowerCase() === form.name.toLowerCase() &&
-        (user.age === form.age ||
-          user.city.toLowerCase() === form.city.toLowerCase()),
+        user.age === form.age &&
+        user.city.toLowerCase() === form.city.toLowerCase()
     );
 
     if (isDuplicate) {
-      seterror("User All ready Register");
-      setsuccess(" ");
+      setError("User already registered");
+      setSuccess("");
       return;
     }
 
-    console.log(form);
-
     try {
-      seterror("");
-      const res = await fetch(
-        "http://localhost:4000/userlist/api/v2/postAdmin",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "Application/json",
-          },
-          body: JSON.stringify(form),
+      const res = await fetch(`${API}/postAdmin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify(form),
+      });
 
-      const data = await res.json();
+      const result = await res.json();
 
       if (res.ok) {
-        setform({ name: "", age: "", city: "" });
-        setsuccess("Data Inserted");
+        setSuccess("Data inserted successfully ✅");
+        setError("");
+        setForm({ name: "", age: "", city: "" });
+        getData(); // refresh list
       } else {
-        setform(data.message || "Failed Inserted Data");
+        setError(result.message || "Insert failed");
       }
     } catch (err) {
-      seterror("Server Not reachable check backend");
       console.error(err);
+      setError("Server not reachable");
     }
   };
 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setform({ ...form, [name]: value });
+    setForm({ ...form, [name]: value });
   };
+
   /*
-! Get Data From Server handle Server Request
-*/
-  const getdata = async () => {
+  ! Get User Request
+  */
+  const getData = async () => {
     try {
-      const res = await fetch("http://localhost:4000/userlist/api/v2/getAdmin");
+      const res = await fetch(`${API}/getAdmin`);
       const result = await res.json();
-      setdata(result);
+      setData(result);
     } catch (err) {
-      console.error("Error Fetching Data : ", err);
+      console.error("Error fetching data:", err);
     }
   };
 
   useEffect(() => {
-    getdata();
+    getData();
   }, []);
 
+ /*
+ ! Delete With Data Base Integration
+ */
+  const deleteAdmin = async (id) => {
+    const confirmDelete = window.confirm("Delete this user?");
+    if (!confirmDelete) return;
 
-  const DeleteUser = async (id) => {
-    try{
-      await fetch(`http://localhost:4000/userlist/api/v2/deleteAdmin/${id}`, {
-        method : "DELETE",
+    try {
+      const res = await fetch(`${API}/deleteAdmin/${id}`, {
+        method: "DELETE",
       });
-      setdata((prevUser)=> prevUser.filter((u)=> u._id !== id))
-    }catch(err){
-      console.error(err)
-    }
-  }
 
-  ``
+      if (res.ok) {
+        setData((prev) => prev.filter((u) => u._id !== id));
+      }
+    } catch (err) {
+      console.error("Delete error:", err);
+    }
+  };
+
   return (
-    // <div></div>
     <>
+     
       <form onSubmit={insertHandle}>
+        <h2>Insert Admin</h2>
+
         {success && <p style={{ color: "green" }}>{success}</p>}
-        <h1>Insert Admin Of The Side</h1>
-        name{" "}
-        <input
-          type="text"
-          value={form.name}
-          onChange={handleChange}
-          name="name"
-        />
-        Age{" "}
-        <input
-          type="text"
-          value={form.age}
-          onChange={handleChange}
-          name="age"
-        />
-        City{" "}
-        <input
-          type="text"
-          value={form.city}
-          onChange={handleChange}
-          name="city"
-        />
-        <button type="submit">Insert data</button>
         {error && <p style={{ color: "red" }}>{error}</p>}
+
+        <div>
+          Name:
+          <input
+            type="text"
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          Age:
+          <input
+            type="number"
+            name="age"
+            value={form.age}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          City:
+          <input
+            type="text"
+            name="city"
+            value={form.city}
+            onChange={handleChange}
+          />
+        </div>
+
+        <button type="submit">Insert Data</button>
       </form>
 
+
       <div className="userlist">
-        <h1>User List</h1>
-        <table border={1} cellPadding={10}>
+        <h2>User List</h2>
+
+        <table border="1" cellPadding="10">
           <thead>
             <tr>
               <th>Name</th>
               <th>Age</th>
               <th>City</th>
-              <th>Delete Data</th>
+              <th>Delete</th>
             </tr>
           </thead>
 
           <tbody>
-            {data.map((item, index) => (
-              <tr key={index}>
-                <td>{item.name}</td>
-                <td>{item.age}</td>
-                <td>{item.city}</td>
-                <td>
-                  {" "}
-                  <div className="deleteBtn">
-                    {/* <button onClick={() => deleteAdmin(item.index)}>Delete</button> */}
-                  </div>
-                </td>
+            {data.length === 0 ? (
+              <tr>
+                <td colSpan="4">No users found</td>
               </tr>
-            ))}
+            ) : (
+              data.map((item) => (
+                <tr key={item._id}>
+                  <td>{item.name}</td>
+                  <td>{item.age}</td>
+                  <td>{item.city}</td>
+                  <td>
+                    <button onClick={() => deleteAdmin(item._id)}>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
