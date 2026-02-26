@@ -44,11 +44,6 @@ exports.deleteAdmin = async (req, res, next) => {
             }
         );
 
-        if(!this.deleteAdmin){
-            return res.status(401).json({
-                message : "not found"
-            })
-        }
 
         res.json({
             message : "User delete successfully",
