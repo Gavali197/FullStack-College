@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { UpdateAdmin } from "../../../back1/Controller/AdminController";
 
 const AdminController = () => {
   const [form, setForm] = useState({ name: "", age: "", city: "" });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [data, setData] = useState([]);
+ const [editingUser, setEditingUser] = useState(null);
 
   const API = "http://localhost:4000/userlist/api/v2";
 /*
@@ -81,6 +83,31 @@ const AdminController = () => {
     getData();
   }, []);
 
+  const handlerEdit = (data) => {
+  setEditingUser(data._id);
+    setData({ name: data.name, age: data.age, city: data.city });
+  }
+
+    const handleUpdate = async () => {
+    const res = await fetch(
+      `http://localhost:4000/userlist/api/v2/updateAdmin/${editingUser}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dat),
+      },
+    );
+
+    const data = await res.json();
+
+    data((prev) =>
+      prev.map((u) => (u._id === editingUser ? data.user : u)),
+    );
+
+    setEditingUser(null);
+    setForm({ name: "", age: "", city: "" });
+  };
+
  /*
  ! Delete With Data Base Integration
  */
@@ -140,6 +167,8 @@ const AdminController = () => {
           />
         </div>
 
+
+        <button type="submit">Update Data</button>
         <button type="submit">Insert Data</button>
       </form>
 
@@ -171,6 +200,11 @@ const AdminController = () => {
                   <td>
                     <button onClick={() => deleteAdmin(item._id)}>
                       Delete
+                    </button>
+                  </td>
+                  <td>
+                    <button onClick={editingUser}>
+                      Update
                     </button>
                   </td>
                 </tr>

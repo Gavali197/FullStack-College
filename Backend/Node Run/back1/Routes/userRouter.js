@@ -9,11 +9,12 @@ const {
 } = require("../Controller/UserController");
 
 
-const {getAdmin, postAdmin, deleteAdmin} = require("../Controller/AdminController")
+const {getAdmin, postAdmin, deleteAdmin, UpdateAdmin} = require("../Controller/AdminController")
 
 router.get("/getAdmin", getAdmin);
 router.post("/postAdmin", postAdmin);
 router.delete("/deleteAdmin/:id", deleteAdmin);
+router.put("/updateAdmin/:id", UpdateAdmin);
 
 router.get("/get", getuser);
 router.post("/post", postUser);
