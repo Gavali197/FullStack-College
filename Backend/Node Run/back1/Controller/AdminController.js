@@ -58,3 +58,19 @@ exports.deleteAdmin = async (req, res, next) => {
         next(err + "inssue in update")
     }
 }
+
+exports.UpdateAdmin = async (req, res, next) => {
+    try{
+      const updatedUser =  await admin.findByIdAndUpdate(
+        req.params.id,
+        req.body,{
+            new : true,
+            runValidators : true
+        }
+      );
+
+      
+    }catch(err){
+        next(err + "The Error Of update Controller")
+    }
+}
