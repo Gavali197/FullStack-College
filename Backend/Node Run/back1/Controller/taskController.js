@@ -1,16 +1,16 @@
-const taskApp = require("../Model/taskModel");
+const TaskApp = require("../Model/taskModel");
 
 exports.addTask = async(req, res, next) => {
 
     try{
-        const addTask = await taskApp.create(req.body);
-        if(!addTask){
+        const postTask = await TaskApp.create(req.body);
+        if(!postTask){
             return res.status(401).json({
                 message : "Some error from task controller"
             })
         }
 
-        res.json(addTask)
+        res.json(postTask)
     }catch(err){
         next(err)
     }
@@ -18,10 +18,10 @@ exports.addTask = async(req, res, next) => {
 }
 
 
-exports.addTask = async(req, res, next) => {
+exports.FindTask = async(req, res, next) => {
 
     try{
-        const getTask = await taskApp.find();
+        const getTask = await TaskApp.find();
         if(!getTask){
             return res.status(401).json({
                 message : "Some error from task controller"
