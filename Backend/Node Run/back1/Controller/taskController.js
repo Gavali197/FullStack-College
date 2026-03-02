@@ -1,7 +1,6 @@
 const TaskApp = require("../Model/taskModel");
 
 exports.addTask = async(req, res, next) => {
-
     try{
         const postTask = await TaskApp.create(req.body);
         if(!postTask){
