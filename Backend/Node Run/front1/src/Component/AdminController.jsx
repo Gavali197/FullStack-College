@@ -40,7 +40,7 @@ const AdminController = () => {
   };
  
 
-    
+
   /*
   ! Handle Update (PUT Request)
   */
@@ -91,7 +91,7 @@ const AdminController = () => {
         getData();
       }
     } catch (err) {
-      setError("Server not reachable");
+      setError("Server not reachable" + err);
     }
   };
 
