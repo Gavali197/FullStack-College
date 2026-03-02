@@ -28,7 +28,7 @@ router.delete("/delete/:id", deleteUser);
 
 const { addTask, FindTask } = require("../Controller/taskController");
 
-router.post("/addTask", addTask);
+router.post("/postTask", addTask);
 router.get("/findTask", FindTask);
 
 module.exports = router
