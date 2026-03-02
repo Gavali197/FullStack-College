@@ -71,7 +71,7 @@ exports.UpdateAdmin = async (req, res, next) => {
             return res.status(401).json({
                 message: "Not Found"
             })
-        }
+        }   
 
         res.json({
             message: "User Update Successfully",
