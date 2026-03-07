@@ -1,5 +1,4 @@
-const admin = require("../Model/AdminModel")
-
+const admin = require("../Model/AdminModel");
 
 exports.getAdmin = async (req, res, next) => {
     try {
@@ -15,6 +14,12 @@ exports.getAdmin = async (req, res, next) => {
     }
 }
 
+
+
+
+
+
+
 exports.postAdmin = async (req, res, next) => {
     try {
         const createAdmin = await admin.create(req.body);
@@ -28,6 +33,10 @@ exports.postAdmin = async (req, res, next) => {
         next(err)
     }
 }
+
+
+
+
 
 
 
@@ -56,6 +65,12 @@ exports.deleteAdmin = async (req, res, next) => {
         next(err + "inssue in update")
     }
 }
+
+
+
+
+
+
 
 exports.UpdateAdmin = async (req, res, next) => {
     try {
