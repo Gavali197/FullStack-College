@@ -1,6 +1,10 @@
 const express  = require("express");
 const router = express.Router();
 
+const {get, postBook} = require("../Controller/BookShelfController");
+
+router.get("/getbook", get);
+router.post("/postBook", postBook);
 
 //admin routes
 const {getAdmin, postAdmin, deleteAdmin, UpdateAdmin} = require("../Controller/AdminController")
