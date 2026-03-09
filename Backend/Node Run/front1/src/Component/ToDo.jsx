@@ -30,7 +30,7 @@ const ToDo = () => {
       const res = await fetch(`${API}/postTask`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify(form)
       });
 
       if (res.ok) {
