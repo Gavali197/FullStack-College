@@ -7,12 +7,14 @@ import View from "./Component/view";
 import { Route, Routes } from "react-router-dom";
 import AdminController from "./Component/AdminController";
 import ToDo from "./Component/ToDo";
+import BookShelf from "./Component/BookShelf";
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
     <>
       <Routes>
+        <Route path="/bookmanage" element={<BookShelf />} />
         <Route path="/adminController" element={<AdminController />} />
         <Route path="/Todo" element={<ToDo />} />
         <Route path="/insert" element={<Insert />} />

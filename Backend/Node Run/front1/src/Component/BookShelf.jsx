@@ -1,8 +1,14 @@
-import React from 'react'
-import { useState } from 'react'
+import React from "react";
+import { useState } from "react";
 
 const BookShelf = () => {
-  const [form, setform] = useState({ book : "", auther:"", price:"", rating:"", createdAt:"" });
+  const [form, setform] = useState({
+    book: "",
+    author: "",
+    price: "",
+    rating: "",
+    createdAt: "",
+  });
   const [error, seterror] = useState("");
   const [success, setsuccess] = useState("");
   const [data, setdata] = useState([]);
@@ -12,28 +18,79 @@ const BookShelf = () => {
   const handleBook = async (e) => {
     e.preventDefault();
 
-    if(!form.book || !form.auther || !form.price || !form.rating || !form.createdAt){
-        seterror("Fill All information");
-        return
+    if (
+      !form.book ||
+      !form.author ||
+      !form.price ||
+      !form.rating ||
+      !form.createdAt
+    ) {
+      seterror("Fill All information");
+      return;
     }
 
-    try{
-        const res = await fetch(`${API}/postbook`, {
-            method:"POST", 
-            headers: {"Content-Type" : "application/json"},
-            body: JSON.stringify(form)
-        })
+    try {
+      const res = await fetch(`${API}/postbook`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-        if(res.ok){
-            setsuccess("Book Added")
-        }
+      if (res.ok) {
+        setsuccess("Book Added");
+      } else {
+        const errorData = await res.json();
+        seterror(errorData.message || "Failed To added book");
+      }
+    } catch (err) {
+      seterror("server Error : " + err);
     }
-  }
-    return (
+  };
+
+  const onchange = (e) => {
+    const { name, value } = e.target;
+    setform({ ...form, [name]: value });
+  };
+  return (
     <>
-    
+      {success && <p style={{ color: "green" }}>{success}</p>}
+      <form onSubmit={handleBook}>
+        <h1>Book Added Shelf</h1>
+        book :{" "}
+        <input type="text" value={form.book} onChange={onchange} name="book" />
+        author :{" "}
+        <input
+          type="text"
+          value={form.author}
+          onChange={onchange}
+          name="author"
+        />
+        price :{" "}
+        <input
+          type="text"
+          value={form.price}
+          onChange={onchange}
+          name="price"
+        />
+        rating :{" "}
+        <input
+          type="text"
+          value={form.rating}
+          onChange={onchange}
+          name="rating"
+        />
+        CreatedAt :{" "}
+        <input
+          type="date"
+          value={form.createdAt}
+          onChange={onchange}
+          name="createdAt"
+        />
+        <button type="submit">Add In Book Shelf</button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </form>
     </>
-  )
-}
+  );
+};
 
-export default BookShelf
+export default BookShelf;
