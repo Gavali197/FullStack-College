@@ -114,7 +114,7 @@ const ToDo = () => {
                 <td>{item.date}</td>
                 <td>{item.Status}</td>
               </tr>
-            ))}
+            ))} 
           </tbody>
         </table>
       </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 const BookShelf = () => {
@@ -51,6 +51,20 @@ const BookShelf = () => {
     const { name, value } = e.target;
     setform({ ...form, [name]: value });
   };
+
+  const getData = async() => {
+    try{
+    const res = await fetch(`${API}/getBook`)
+    const result = await res.json();
+    setdata(result);
+    }catch(err){
+      seterror("Error From Get Data" + err);
+    }
+  }
+
+  useEffect(()=>{
+    getData();
+  })
   return (
     <>
       {success && <p style={{ color: "green" }}>{success}</p>}
@@ -89,6 +103,31 @@ const BookShelf = () => {
         <button type="submit">Add In Book Shelf</button>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
+      <hr />
+      <div className="tableList">
+        <table cellPadding="10" border={1}>
+          <thead>
+            <tr>
+              <th>Book Name</th>
+              <th>Author</th>
+              <th>Price</th>
+              <th>Rating</th>
+              <th>CreatedAt</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item) => (
+              <tr key={item._id}>
+                <td>{item.book}</td>
+                <td>{item.author}</td>
+                <td>{item.price}</td>
+                <td>{item.rating}</td>
+                <td>{item.createdAt}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };
