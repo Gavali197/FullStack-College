@@ -64,7 +64,7 @@ const BookShelf = () => {
 
   useEffect(()=>{
     getData();
-  })
+  }, []);
   return (
     <>
       {success && <p style={{ color: "green" }}>{success}</p>}
@@ -121,7 +121,11 @@ const BookShelf = () => {
                 <td>{item.book}</td>
                 <td>{item.author}</td>
                 <td>{item.price}</td>
-                <td>{item.rating}</td>
+               <td>
+                {Array.from({length : Number(item.rating) }).map((_, index)=>(
+                  <span key={index}>⭐</span>
+                ))}
+               </td>
                 <td>{item.createdAt}</td>
               </tr>
             ))}
