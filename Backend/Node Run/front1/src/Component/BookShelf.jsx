@@ -69,6 +69,20 @@ const BookShelf = () => {
     }
   }
 
+ const DeleteTask = async(id) => {
+  try{
+    await fetch(`${API}/deletebook/${id}`, {
+      method : "DELETE"
+    })
+
+    setdata((prevBooks)=> prevBooks.filter((u)=> u._id !== id))
+  }catch(err){
+    console.log(err + "Issue In Delete");
+    
+  }
+ }
+
+
   useEffect(()=>{
     getData();
   }, []);
@@ -120,6 +134,7 @@ const BookShelf = () => {
               <th>Price</th>
               <th>Rating</th>
               <th>CreatedAt</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -134,6 +149,7 @@ const BookShelf = () => {
                 ))}
                </td>
                 <td>{item.createdAt}</td>
+                <td><button onClick={()=> DeleteTask(item._id)}>Delete</button></td>
               </tr>
             ))}
           </tbody>
