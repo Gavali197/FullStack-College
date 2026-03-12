@@ -13,6 +13,13 @@ const BookShelf = () => {
   const [success, setsuccess] = useState("");
   const [data, setdata] = useState([]);
 
+  const [num, setnum] = useState([]);
+
+  const AddArray = () => {
+    setnum+1
+    Array(setnum.length).push()
+  }
+
   const API = "http://localhost:4000/userlist/api/v2";
 
   const handleBook = async (e) => {
@@ -132,6 +139,9 @@ const BookShelf = () => {
           </tbody>
         </table>
       </div>
+
+    <p>{num}</p>
+    <button onClick={AddArray}>Add Array</button>
     </>
   );
 };

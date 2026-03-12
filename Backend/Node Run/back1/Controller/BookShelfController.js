@@ -29,3 +29,29 @@ exports.get = async (req, res, next) => {
         next(err)
     }
 }
+
+exports.Delete = async(req, res, next) => {
+   try {
+     await books.findByIdAndDelete(
+         req.params.id,
+         req.body,
+         {
+             new : true,
+             runValidators : true
+         }
+     )
+ 
+     if(!this.Delete){
+         return res.status(401).json({
+             message : "Not Found"
+         })
+     }
+ 
+     res.json({
+         message : "Task Delete Successfully",
+         books : this.Delete
+     })
+   } catch (err) {
+        next(err + "Inssue in delete")
+   }
+}
