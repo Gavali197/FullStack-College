@@ -82,6 +82,19 @@ const BookShelf = () => {
   }
  }
 
+ 
+ const UpdateBook = async(id) => {
+  try{
+    await fetch(`${API}/updatebook/${id}`, {
+      method : "PUT"
+    })
+
+   setdata((prevBooks) => prevBooks.filter((u) => u._id !== id));
+  }catch(err){
+    console.log(err + "Issue In Delete");
+    
+  }
+
 
   useEffect(()=>{
     getData();
@@ -150,16 +163,16 @@ const BookShelf = () => {
                </td>
                 <td>{item.createdAt}</td>
                 <td><button onClick={()=> DeleteTask(item._id)}>Delete</button></td>
+                <td><button onClick={()=> DeleteTask(item._id)}>Delete</button></td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-    <p>{num}</p>
-    <button onClick={AddArray}>Add Array</button>
     </>
   );
 };
+}
 
 export default BookShelf;
