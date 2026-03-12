@@ -88,8 +88,6 @@ const BookShelf = () => {
     await fetch(`${API}/updatebook/${id}`, {
       method : "PUT"
     })
-
-   setdata((prevBooks) => prevBooks.filter((u) => u._id !== id));
   }catch(err){
     console.log(err + "Issue In Delete");
     
