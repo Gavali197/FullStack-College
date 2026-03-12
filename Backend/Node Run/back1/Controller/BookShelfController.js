@@ -55,3 +55,30 @@ exports.Delete = async(req, res, next) => {
         next(err + "Inssue in delete")
    }
 }
+
+
+exports.Update = async(req, res, next) => {
+   try {
+     await books.findByIdAndUpdate(
+         req.params.id,
+         req.body,
+         {
+             new : true,
+             runValidators : true
+         }
+     )
+ 
+     if(!this.Update){
+         return res.status(401).json({
+             message : "Not Found"
+         })
+     }
+ 
+     res.json({
+         message : "Task Update Successfully",
+         books : this.Update
+     })
+   } catch (err) {
+        next(err + "Inssue in Update")
+   }
+}
