@@ -75,7 +75,7 @@ const BookShelf = () => {
       method : "DELETE"
     })
 
-    setdata((prevBooks)=> prevBooks.filter((u)=> u._id !== id))
+   setdata((prevBooks) => prevBooks.filter((u) => u._id !== id));
   }catch(err){
     console.log(err + "Issue In Delete");
     
