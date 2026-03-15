@@ -11,6 +11,7 @@ const BookShelf = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [data, setData] = useState([]);
+  const [editingId, setEditingId] = useState(null); // ✅ track which book is being edited
 
   const API = "http://localhost:4000/userlist/api/v2";
 
@@ -20,6 +21,12 @@ const BookShelf = () => {
 
     if (!form.book || !form.author || !form.price || !form.rating || !form.createdAt) {
       setError("Fill All information");
+      return;
+    }
+
+    // If editing → update instead of add
+    if (editingId) {
+      handleUpdate();
       return;
     }
 
@@ -72,28 +79,37 @@ const BookShelf = () => {
     }
   };
 
+  // ✅ Pre-fill form for editing
+  const editBook = (book) => {
+    setForm({
+      book: book.book,
+      author: book.author,
+      price: book.price,
+      rating: book.rating,
+      createdAt: book.createdAt,
+    });
+    setEditingId(book._id);
+  };
+
   // ✅ Update Book
-  const UpdateBook = async (id) => {
+  const handleUpdate = async () => {
     try {
-      const res = await fetch(`${API}/updatebook/${id}`, {
+      const res = await fetch(`${API}/updatebook/${editingId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form), // send updated form data
+        body: JSON.stringify(form),
       });
-
       if (res.ok) {
         const updatedBook = await res.json();
-        setData((prevBooks) =>
-          prevBooks.map((u) => (u._id === id ? updatedBook : u))
+        setData((prev) =>
+          prev.map((b) => (b._id === editingId ? updatedBook : b))
         );
         setSuccess("Book Updated");
-        setError("");
+        setEditingId(null);
         setForm({ book: "", author: "", price: "", rating: "", createdAt: "" });
-      } else {
-        setError("Failed to update book");
       }
     } catch (err) {
-      console.log(err + " Issue In Update");
+      setError("Update failed: " + err);
     }
   };
 
@@ -116,7 +132,12 @@ const BookShelf = () => {
         <input type="text" value={form.rating} onChange={onChange} name="rating" />
         CreatedAt:{" "}
         <input type="date" value={form.createdAt} onChange={onChange} name="createdAt" />
-        <button type="submit">Add In Book Shelf</button>
+        
+        {/* Switch button depending on mode */}
+        <button type="submit">
+          {editingId ? "Update Book" : "Add In Book Shelf"}
+        </button>
+
         {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
       <hr />
@@ -130,7 +151,7 @@ const BookShelf = () => {
               <th>Rating</th>
               <th>CreatedAt</th>
               <th>Delete</th>
-              <th>Update</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -149,7 +170,7 @@ const BookShelf = () => {
                   <button onClick={() => DeleteTask(item._id)}>Delete</button>
                 </td>
                 <td>
-                  <button onClick={() => UpdateBook(item._id)}>Update</button>
+                  <button onClick={() => editBook(item)}>Edit</button>
                 </td>
               </tr>
             ))}
