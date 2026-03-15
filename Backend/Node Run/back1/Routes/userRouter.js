@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {get, postBook, Delete, Update} = require("../Controller/BookShelfController");
 
-router.delete("/updatebook/:id", Update);
+router.put("/updatebook/:id", Update);
 router.delete("/deletebook/:id", Delete);
 router.get("/getbook", get);
 router.post("/postBook", postBook);
