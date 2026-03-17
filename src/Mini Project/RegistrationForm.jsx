@@ -39,7 +39,7 @@
 //     // ✅ Show form data in console
 //       console.log("User Registered:", form);
 
-//       // ✅ Clear form fields
+//       //  ✅ Clear form fields
 //       setform({
 //         user: "",
 //         email: "",
