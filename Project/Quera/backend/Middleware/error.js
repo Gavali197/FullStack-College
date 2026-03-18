@@ -1,5 +1,5 @@
 const errorHandler =(err, req, res, next) => {
-    res.status(401).json({
+    res.status(500).json({
         message : err.message || "server issue"
     })
 }
