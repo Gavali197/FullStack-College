@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "./style.css"
+import "./style.css";
+import { useParams, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [data, setdata] = useState([]);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const API = "http://localhost:3030/api/v2";
 
   const getData = async () => {
@@ -15,30 +19,35 @@ const Dashboard = () => {
     }
   };
 
+  // const handleBlogPostclick = async (id) => {
+  //  navigate(`/blogs/${id}`)
+  // };
+
   useEffect(() => {
     getData();
   }, []);
   return (
     <>
-    <div className="dashboard">
-      <h1 className="heading">Heading Page Of new Blog Posted Here</h1>
-      <div className="blog-container">
-        {data.map((item, index) => (
-          <div className="blog" key={index}>
-            <h3>{item.heading}</h3>
-            <p>{item.description}</p>
-            <p>
-              <i>
-                <b>{item.author}</b>
-              </i>
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
+      <div className="dashboard">
+        <h1 className="heading">Heading Page Of new Blog Posted Here</h1>
+        <div className="blog-container">
+          {data.map((item, index) => (
+            <div className="blog" key={index}>
+              <h3>{item.heading}</h3>
+              <p>{item.description}</p>
+              <p>
+                <i>
+                  <b>{item.author}</b>
+                </i>
+              </p>
 
+              <button onClick={()=> navigate(`/blogs/${item._id}`)}>Show Blog</button>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
-      );
+  );
 };
 
 export default Dashboard;
