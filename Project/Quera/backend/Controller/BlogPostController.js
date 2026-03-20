@@ -27,3 +27,18 @@ exports.getBlog = async (req, res, next) => {
         next(err)
     }
 }
+
+
+exports.getBlogById = async (req, res, next) => {
+    try {
+        const get = await blog.findOne();
+        if (!get) {
+            return res.status(401).json({
+                message: "Not Found"
+            })
+        }
+        res.json(get)
+    } catch (err) {
+        next(err)
+    }
+}
