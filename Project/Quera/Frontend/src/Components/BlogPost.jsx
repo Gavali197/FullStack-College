@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom"
 // import { postBlog } from "../../../backend/Controller/BlogPostController";
 
 const BlogPost = () => {
@@ -7,6 +8,9 @@ const BlogPost = () => {
     description: "",
     author: "",
   });
+
+  const navigate = useNavigate();
+
   const [error, seterror] = useState("");
   const [data, setdata] = useState([]);
 
@@ -76,6 +80,8 @@ const BlogPost = () => {
         <button type="submit">Post Blog</button>
         {error && <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>}
       </form>
+
+      <button onClick={()=> navigate("/")}>Show All Blog</button>
     </div>
   );
 };

@@ -29,6 +29,13 @@ const Dashboard = () => {
   return (
     <>
       <div className="dashboard">
+        <div className="navbar">
+          <ul>
+           <button onClick={()=> navigate("/blogPost")}>Post Blog</button>
+            <button>Login</button>
+          
+          </ul>
+        </div>
         <h1 className="heading">Heading Page Of new Blog Posted Here</h1>
         <div className="blog-container">
           {data.map((item, index) => (
