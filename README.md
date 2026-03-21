@@ -1,4 +1,4 @@
-# FullStack-College 🚀.
+# FullStack-College 🚀. . . .
 
 A learning-focused Full Stack development repository created to practice, build, and improve real-world development skills step by step.
 
