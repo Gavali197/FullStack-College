@@ -1,54 +1,96 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const registration = () => {
-  const [form, setform] = useState({name:"", email:"", password:""})
+const Registration = () => {
+  const [form, setform] = useState({
+    name: "",
+    email: "",
+    password: "",
+    cpassword: "",
+    location : ""
+  });
+
   const [error, seterror] = useState("");
   const navigate = useNavigate();
 
   const onchange = (e) => {
-    const {name, value} = e.target;
-    setform(...form, {[name]:value})
-  }
+    const { name, value } = e.target;
+    setform({ ...form, [name]: value });
+  };
 
-  const API = "localhost:3030/api/v2"
+  const API = "http://localhost:3030/api/v2";
 
-  const cpassword = document.getElementById()
+  const handlForm = async (e) => {
+    e.preventDefault();
 
-  const handlForm = async(e) => {
-    if(!form.name || !form.email || !form.password){
-      seterror("Field are Empty");
-    }else if(form.name < 3){
-      seterror("user Name length at least 3 char")
-    }else if(form.email < 5 || form.email.includes("@") || !form.email.toLowerCase()){
-      seterror("invalid email")
-    }else if(form.password < 6){
-      seterror("Password are at least six char")
-    }else if(form.password === cpassword){
-      seterror("password not match")
-    }else {
-      seterror("");
+    // Validation
+    if (!form.name || !form.email || !form.password || !form.cpassword) {
+      return seterror("All fields are required");
     }
 
-    try{
+    if (form.name.length < 3) {
+      return seterror("Name must be at least 3 characters");
+    }
+
+    if (!form.email.includes("@")) {
+      return seterror("Invalid email");
+    }
+
+    if (form.password.length < 6) {
+      return seterror("Password must be at least 6 characters");
+    }
+
+    if (form.password !== form.cpassword) {
+      return seterror("Passwords do not match");
+    }
+
+    seterror("");
+
+    try {
       const res = await fetch(`${API}/register`, {
-        method : "POST",
-        headers : {"Content-Type" : "application/json"},
-        body : JSON.stringify(form)
-      })
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          password: form.password,
+        }), // 👈 cpassword NOT sent
+      });
 
-      if(res.ok){
-        await res.json();
-        alert("User Register Successfully");
-        navigate("/login")
+      if (res.ok) {
+        alert("User Registered Successfully");
+        navigate("/login");
       }
-    }catch(err){
-      console.error(err + "Register side");
+    } catch (err) {
+      console.error(err);
     }
-  }
-  return (
-    <div>registration</div>
-  )
-}
+  };
 
-export default registration
+  return (
+    <div>
+      <form onSubmit={handlForm}>
+        name :
+        <input type="text" name="name" value={form.name} onChange={onchange} />
+
+        email :
+        <input type="text" name="email" value={form.email} onChange={onchange} />
+
+        password :
+        <input type="password" name="password" value={form.password} onChange={onchange} />
+
+        confirm password :
+        <input type="password" name="cpassword" value={form.cpassword} onChange={onchange} />
+        location : 
+        <input type="text" name="location" value={form.location} onChange={onchange} />
+
+        <button type="submit">Register User</button>
+
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </form>
+    </div>
+  );
+};
+
+export default Registration;
