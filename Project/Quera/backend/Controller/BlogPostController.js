@@ -1,4 +1,5 @@
 const blog = require("../Model/BlogModel");
+const user = require("../Model/UserModel");
 
 exports.postBlog = async (req, res, next) => {
     try {
@@ -39,6 +40,20 @@ exports.getBlogById = async (req, res, next) => {
             })
         }
         res.json(get)
+    } catch (err) {
+        next(err)
+    }
+}
+
+exports.postUser = async (req, res, next) => {
+    try {
+        const UserPost = await user.create(req.body);
+        if (!UserPost) {
+            return res.status(401).json({
+                message: "Not Found"
+            })
+        }
+        res.json(UserPost)
     } catch (err) {
         next(err)
     }
