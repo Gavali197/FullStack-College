@@ -63,15 +63,31 @@ exports.postUser = async (req, res, next) => {
 
 exports.loginUser = async (req, res, next) => {
     try {
-        const {email} = req.params;
-        const {password} = req.params;
-        const get = await blog.find(email, password);
-        if (!get) {
-            return res.status(401).json({
-                message: "Not Found"
+      const {email, password} = req.body;
+
+      const getEmail = await user.findOne({email});
+
+      if (!getEmail) {
+            return res.status(400).json({
+                message: "user Not Found"
             })
         }
-        res.json(get)
+        
+        if(user.password !== password){
+            return res.status(400).json({
+                message: "Incorrect Password"
+            })
+        }
+
+        res.json({
+            message : "Login Successfully",
+
+            user : {
+                id : user._id,
+                name : user.name,
+                email : user.email
+            }
+        })
     } catch (err) {
         next(err)
     }
