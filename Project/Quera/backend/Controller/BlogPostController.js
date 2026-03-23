@@ -73,7 +73,7 @@ exports.loginUser = async (req, res, next) => {
             })
         }
 
-        if (user.password !== password) {
+        if (getEmail.password !== password) {
             return res.status(400).json({
                 message: "Incorrect Password"
             })
@@ -83,9 +83,9 @@ exports.loginUser = async (req, res, next) => {
             message: "Login Successfully",
 
             user: {
-                id: user._id,
-                name: user.name,
-                email: user.email
+                id: getEmail._id,
+                name: getEmail.name,
+                email: getEmail.email
             }
         })
     } catch (err) {
