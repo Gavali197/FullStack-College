@@ -1,9 +1,83 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  return (
-    <div>Login</div>
-  )
-}
+  const [form, setform] = useState({
+    email: "",
+    password: "",
+  });
 
-export default Login
+  const [error, seterror] = useState("");
+  const navigate = useNavigate();
+
+  const onchange = (e) => {
+    const { name, value } = e.target;
+    setform({ ...form, [name]: value });
+  };
+
+  const API = "http://localhost:3030/api/v2";
+
+  const handlForm = async (e) => {
+    e.preventDefault();
+
+    // Validation
+    if (!form.email || !form.password) {
+      return seterror("All fields are required");
+    }
+
+    if (!form.email.includes("@")) {
+      return seterror("Invalid email");
+    }
+
+    if (form.password.length < 6) {
+      return seterror("Password must be at least 6 characters");
+    }
+
+    seterror("");
+
+    try {
+      const res = await fetch(`${API}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      alert(data.message);
+
+      if (res.ok) {
+        alert("User login Successfully");
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  return (
+    <div>
+      <form onSubmit={handlForm}>
+        email{" "}
+        <input
+          type="text"
+          onChange={onchange}
+          value={form.email}
+          name="email"
+        />
+        password{" "}
+        <input
+          type="password"
+          onChange={onchange}
+          value={form.password}
+          name="password"
+        />
+        <button type="submit">Login</button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </form>
+    </div>
+  );
+};
+
+export default Login;
