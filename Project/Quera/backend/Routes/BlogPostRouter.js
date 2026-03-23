@@ -4,7 +4,7 @@ const router = express.Router();
 const {postUser, loginUser} = require("../Controller/BlogPostController");
 
 router.post("/register", postUser);
-router.post("/login", loginUser);
+router.get("/login", loginUser);
 
 const { postBlog, getBlog, getBlogById } = require("../Controller/BlogPostController")
 

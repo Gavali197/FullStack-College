@@ -32,7 +32,7 @@ exports.getBlog = async (req, res, next) => {
 
 exports.getBlogById = async (req, res, next) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         const get = await blog.findById(id);
         if (!get) {
             return res.status(401).json({
@@ -63,29 +63,29 @@ exports.postUser = async (req, res, next) => {
 
 exports.loginUser = async (req, res, next) => {
     try {
-      const {email, password} = req.body;
+        const { email, password } = req.body;
 
-      const getEmail = await user.findOne({email});
+        const getEmail = await user.findOne({ email });
 
-      if (!getEmail) {
+        if (!getEmail) {
             return res.status(400).json({
                 message: "user Not Found"
             })
         }
-        
-        if(user.password !== password){
+
+        if (user.password !== password) {
             return res.status(400).json({
                 message: "Incorrect Password"
             })
         }
 
         res.json({
-            message : "Login Successfully",
+            message: "Login Successfully",
 
-            user : {
-                id : user._id,
-                name : user.name,
-                email : user.email
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email
             }
         })
     } catch (err) {
