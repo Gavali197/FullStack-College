@@ -15,9 +15,10 @@ const Login = () => {
     setform({ ...form, [name]: value });
   };
 
-  const API = "https://localhost:3030/api/v2/login";
-
+  const API = "https://localhost:3030/api/v2";
+  
   const handlForm = async (e) => {
+    
     e.preventDefault();
 
     // Validation
@@ -31,21 +32,18 @@ const Login = () => {
 
     if (form.password.length < 6) {
       return seterror("Password must be at least 6 characters");
-    }else{
-      console.log();
-      
     }
 
     seterror("");
 
     
        try {
-    const res = await fetch(`${API}`, {
+    const res = await fetch(`${API}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include", // 🔥 for cookies
+      // credentials: "include", // 🔥 for cookies
       body: JSON.stringify(form),
     });
 
@@ -53,14 +51,13 @@ const Login = () => {
 
     if (!res.ok) {
       return seterror(data.message || "Login failed");
+    }else{
+    alert(data.message);
+    navigate("/");
     }
 
-    alert(data.message);
-    navigate("/dashboard");
-
   } catch (err) {
-    console.error(err);
-    seterror("Something went wrong");
+    seterror("Something went wrong" + err);
   }
     
   };
