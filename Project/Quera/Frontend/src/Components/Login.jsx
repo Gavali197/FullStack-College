@@ -15,7 +15,7 @@ const Login = () => {
     setform({ ...form, [name]: value });
   };
 
-  const API = "https://localhost:3030/api/v2";
+  const API = "http://localhost:3030/api/v2";
   
   const handlForm = async (e) => {
     
