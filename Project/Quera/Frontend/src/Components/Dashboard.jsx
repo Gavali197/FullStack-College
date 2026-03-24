@@ -32,7 +32,7 @@ const Dashboard = () => {
         <div className="navbar">
           <ul>
            <button onClick={()=> navigate("/blogPost")}>Post Blog</button>
-            <button>Login</button>
+            <button onClick={()=> navigate("/login")}>Login</button>
           
           </ul>
         </div>

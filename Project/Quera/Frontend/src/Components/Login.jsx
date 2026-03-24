@@ -15,7 +15,7 @@ const Login = () => {
     setform({ ...form, [name]: value });
   };
 
-  const API = "http://localhost:3030/api/v2";
+  const API = "https://localhost:3030/api/v2/login";
 
   const handlForm = async (e) => {
     e.preventDefault();
@@ -31,30 +31,38 @@ const Login = () => {
 
     if (form.password.length < 6) {
       return seterror("Password must be at least 6 characters");
+    }else{
+      console.log();
+      
     }
 
     seterror("");
 
-    try {
-      const res = await fetch(`${API}/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
+    
+       try {
+    const res = await fetch(`${API}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include", // 🔥 for cookies
+      body: JSON.stringify(form),
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      alert(data.message);
-
-      if (res.ok) {
-        alert("User login Successfully");
-        navigate("/dashboard");
-      }
-    } catch (err) {
-      console.error(err);
+    if (!res.ok) {
+      return seterror(data.message || "Login failed");
     }
+
+    alert(data.message);
+    navigate("/dashboard");
+
+  } catch (err) {
+    console.error(err);
+    seterror("Something went wrong");
+  }
+    
   };
   return (
     <div>
