@@ -40,20 +40,18 @@ const Login = () => {
        try {
     const res = await fetch(`${API}/login`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // credentials: "include", // 🔥 for cookies
+      headers: { "Content-Type": "application/json" },
+      credentials: "include", // 🔥 for cookies
       body: JSON.stringify(form),
     });
 
+    
     const data = await res.json();
-
-    if (!res.ok) {
-      return seterror(data.message || "Login failed");
-    }else{
-    alert(data.message);
+    if (res.ok) {
+     
     navigate("/");
+    }else{
+       return seterror(data.message || "Login failed");
     }
 
   } catch (err) {
