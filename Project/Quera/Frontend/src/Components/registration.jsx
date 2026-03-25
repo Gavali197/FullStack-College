@@ -59,10 +59,25 @@ const Registration = () => {
         }), // 👈 cpassword NOT sent
       });
 
-      if (res.ok) {
-        alert("User Registered Successfully");
-        navigate("/login");
-      }
+       const data = await res.json(); // 👈 important
+
+    // ❌ If email already exists
+    if (res.status === 409) {
+      seterror("⚠ Email already registered. Please login");
+      return;
+    }
+
+    // ❌ Other errors
+    if (!res.ok) {
+      seterror(data.message || "Something went wrong");
+      return;
+    }
+
+    // ✅ Success
+    alert("User Registered Successfully");
+    navigate("/login");
+
+      
     } catch (err) {
       console.error(err);
     }

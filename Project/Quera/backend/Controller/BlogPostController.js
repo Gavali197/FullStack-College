@@ -49,7 +49,20 @@ exports.getBlogById = async (req, res, next) => {
 exports.postUser = async (req, res, next) => {
     try {
         const { name,email,password,location } = req.body
+
+        //check email all ready register
+        const isEmailCheck = await user.findOne({email})
+        if(isEmailCheck){
+            // alert("email id all ready avaliable")
+            return res.status(409).json({
+                message: "Email all ready avaliable"
+            })
+        }
+        
+        //Password Hashing
         const hashedPass = await bcrypt.hash(req.body.password, 10);
+
+        //create collection to post database
         const UserPost = await user.create({
             name,
             email,
@@ -69,8 +82,6 @@ exports.postUser = async (req, res, next) => {
     }
 }
 
-
-
 exports.loginUser = async (req, res, next) => {
     try {
         const { email, password } = req.body;
@@ -82,14 +93,6 @@ exports.loginUser = async (req, res, next) => {
                 message: "user Not Found"
             })
         }
-
-        if (getEmail.password !== password) {
-            return res.status(400).json({
-                message: "Incorrect Password"
-            })
-        }
-
-
       
         const isMatch = await bcrypt.compare(password, getEmail.password)
 
