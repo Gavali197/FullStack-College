@@ -48,12 +48,21 @@ exports.getBlogById = async (req, res, next) => {
 
 exports.postUser = async (req, res, next) => {
     try {
-        const UserPost = await user.create(req.body);
+        const { name,email,password,location } = req.body
+        const hashedPass = await bcrypt.hash(req.body.password, 10);
+        const UserPost = await user.create({
+            name,
+            email,
+            password: hashedPass,
+            location
+        });
+
         if (!UserPost) {
             return res.status(401).json({
                 message: "Not Found"
             })
         }
+
         res.json(UserPost)
     } catch (err) {
         next(err)
@@ -78,6 +87,16 @@ exports.loginUser = async (req, res, next) => {
             return res.status(400).json({
                 message: "Incorrect Password"
             })
+        }
+
+
+      
+        const isMatch = await bcrypt.compare(password, getEmail.password)
+
+          if (!isMatch) {
+            return res.status(400).json({
+                message: "Incorrect Password"
+            });
         }
 
         res.json({
