@@ -1,5 +1,6 @@
 const blog = require("../Model/BlogModel");
 const user = require("../Model/UserModel");
+const bcrypt = require("bcrypt");
 
 exports.postBlog = async (req, res, next) => {
     try {
