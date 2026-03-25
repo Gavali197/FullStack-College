@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./style.css"
+
 
 const Registration = () => {
   const [form, setform] = useState({
@@ -82,40 +84,49 @@ const Registration = () => {
 
   return (
     <div>
-      <form onSubmit={handlForm}>
-        name :
-        <input type="text" name="name" value={form.name} onChange={onchange} />
-        email :
-        <input
-          type="text"
-          name="email"
-          value={form.email}
-          onChange={onchange}
-        />
-        password :
-        <input
-          type="password"
-          name="password"
-          value={form.password}
-          onChange={onchange}
-        />
-        confirm password :
-        <input
-          type="password"
-          name="cpassword"
-          value={form.cpassword}
-          onChange={onchange}
-        />
-        location :
-        <input
-          type="text"
-          name="location"
-          value={form.location}
-          onChange={onchange}
-        />
-        <button type="submit">Register User</button>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-      </form>
+      <div className="container-register">
+        <form onSubmit={handlForm}>
+          <label>name :</label>
+          <input
+            type="text"
+            name="name"
+            value={form.name}
+            onChange={onchange}
+          />
+          <label>email :</label>
+          <input
+            type="text"
+            name="email"
+            value={form.email}
+            onChange={onchange}
+          />
+
+          <label>password :</label>
+          <input
+            type="password"
+            name="password"
+            value={form.password}
+            onChange={onchange}
+          />
+
+          <label>confirm password :</label>
+          <input
+            type="password"
+            name="cpassword"
+            value={form.cpassword}
+            onChange={onchange}
+          />
+          <label>location :</label>
+          <input
+            type="text"
+            name="location"
+            value={form.location}
+            onChange={onchange}
+          />
+          <button type="submit">Register User</button>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+        </form>
+      </div>
     </div>
   );
 };
