@@ -7,7 +7,7 @@ const Registration = () => {
     email: "",
     password: "",
     cpassword: "",
-    location : ""
+    location: "",
   });
 
   const [error, seterror] = useState("");
@@ -56,28 +56,25 @@ const Registration = () => {
           name: form.name,
           email: form.email,
           password: form.password,
+          location: form.location,
         }), // 👈 cpassword NOT sent
       });
 
-       const data = await res.json(); // 👈 important
+      const data = await res.json(); // 👈 important
 
-    // ❌ If email already exists
-    if (res.status === 409) {
-      seterror("⚠ Email already registered. Please login");
-      return;
-    }
+      console.log("STATUS:", res.status);
+      console.log("DATA:", data);
 
-    // ❌ Other errors
-    if (!res.ok) {
-      seterror(data.message || "Something went wrong");
-      return;
-    }
+      // ❌ Other errors
+      if (!res.ok) {
+        seterror(data.message);
+        return;
+      }
 
-    // ✅ Success
-    alert("User Registered Successfully");
-    navigate("/login");
-
-      
+      seterror("");
+      // ✅ Success
+      alert("User Registered Successfully");
+      navigate("/login");
     } catch (err) {
       console.error(err);
     }
@@ -88,20 +85,35 @@ const Registration = () => {
       <form onSubmit={handlForm}>
         name :
         <input type="text" name="name" value={form.name} onChange={onchange} />
-
         email :
-        <input type="text" name="email" value={form.email} onChange={onchange} />
-
+        <input
+          type="text"
+          name="email"
+          value={form.email}
+          onChange={onchange}
+        />
         password :
-        <input type="password" name="password" value={form.password} onChange={onchange} />
-
+        <input
+          type="password"
+          name="password"
+          value={form.password}
+          onChange={onchange}
+        />
         confirm password :
-        <input type="password" name="cpassword" value={form.cpassword} onChange={onchange} />
-        location : 
-        <input type="text" name="location" value={form.location} onChange={onchange} />
-
+        <input
+          type="password"
+          name="cpassword"
+          value={form.cpassword}
+          onChange={onchange}
+        />
+        location :
+        <input
+          type="text"
+          name="location"
+          value={form.location}
+          onChange={onchange}
+        />
         <button type="submit">Register User</button>
-
         {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
     </div>
