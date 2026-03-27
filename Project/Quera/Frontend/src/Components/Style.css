@@ -93,3 +93,48 @@
 .container-register p {
   margin-top: 10px;
 }
+
+
+/* Container */
+.containe-login {
+  width: 350px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+/* Labels ONLY insid-login */
+.containe-login label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+/* Inputs ONLY insid-login */
+.containe-login input {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #999;
+}
+
+/* Button ONLY insid-login */
+.containe-login button {
+  margin-top: 15px;
+  padding: 8px;
+  width: 100%;
+  border: 1px solid black;
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+/* Button hover */
+.containe-login button:hover {
+  background-color: gray;
+  color: white;
+}
+
+/* Error message */
+.containe-login p {
+  margin-top: 10px;
+}
