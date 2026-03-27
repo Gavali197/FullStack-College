@@ -16,9 +16,8 @@ const Login = () => {
   };
 
   const API = "http://localhost:3030/api/v2";
-  
+
   const handlForm = async (e) => {
-    
     e.preventDefault();
 
     // Validation
@@ -36,50 +35,47 @@ const Login = () => {
 
     seterror("");
 
-    
-       try {
-    const res = await fetch(`${API}/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include", // 🔥 for cookies
-      body: JSON.stringify(form),
-    });
+    try {
+      const res = await fetch(`${API}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include", // 🔥 for cookies
+        body: JSON.stringify(form),
+      });
 
-    
-    const data = await res.json();
-    if (res.ok) {
-     
-    navigate("/");
-    }else{
-       return seterror(data.message || "Login failed");
+      const data = await res.json();
+      if (res.ok) {
+        navigate("/");
+      } else {
+        return seterror(data.message || "Login failed");
+      }
+    } catch (err) {
+      seterror("Something went wrong" + err);
     }
-
-  } catch (err) {
-    seterror("Something went wrong" + err);
-  }
-    
   };
   return (
     <div>
-      <form onSubmit={handlForm}>
-        email{" "}
-        <input
-          type="text"
-          onChange={onchange}
-          value={form.email}
-          name="email"
-        />
-        password{" "}
-        <input
-          type="password"
-          onChange={onchange}
-          value={form.password}
-          name="password"
-        />
-        <button type="submit">Login</button>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-      </form>
-      <a href="/register">Link</a>
+      <div className="container-login">
+        <form onSubmit={handlForm}>
+          email{" "}
+          <input
+            type="text"
+            onChange={onchange}
+            value={form.email}
+            name="email"
+          />
+          password{" "}
+          <input
+            type="password"
+            onChange={onchange}
+            value={form.password}
+            name="password"
+          />
+          <button type="submit">Login</button>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+        </form>
+        <a href="/register">Link</a>
+      </div>
     </div>
   );
 };
