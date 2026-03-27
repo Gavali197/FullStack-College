@@ -57,14 +57,14 @@ const Login = () => {
     <div>
       <div className="container-login">
         <form onSubmit={handlForm}>
-          email{" "}
+          <label>email </label>
           <input
             type="text"
             onChange={onchange}
             value={form.email}
             name="email"
           />
-          password{" "}
+          <label>password </label>
           <input
             type="password"
             onChange={onchange}
