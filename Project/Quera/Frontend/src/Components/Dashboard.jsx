@@ -17,6 +17,11 @@ const Dashboard = () => {
     } catch (err) {
       console.error(err + "error from get side");
     }
+
+    // Retrieve session data
+  const userHandler =()=>{
+   JSON.parse(sessionStorage.getItem("user"));
+  }  
   };
 
   // const handleBlogPostclick = async (id) => {
@@ -33,6 +38,7 @@ const Dashboard = () => {
           <ul>
            <button onClick={()=> navigate("/blogPost")}>Post Blog</button>
             <button onClick={()=> navigate("/login")}>Login</button>
+            
           
           </ul>
         </div>
