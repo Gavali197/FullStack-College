@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Blogs = () => {
   const [data, setData] = useState(null);
   const { id } = useParams();
+
+  const navigate = useNavigate();
 
   const API = "http://localhost:3030/api/v2/getblog";
 
@@ -28,7 +30,9 @@ const Blogs = () => {
       <h1>{data.heading}</h1>
       <h4>{data.description}</h4>
       <h5>
-        <i><b>{data.author}</b></i>
+        <a href="/userpage">
+        <i><b>@{data.author}</b></i>
+        </a>
       </h5>
     </div>
   );
