@@ -179,7 +179,3 @@ Axios has simpler syntax and supports interceptors.
 
 A function that runs before sending requests or receiving responses.
 
-46. How do you send JWT from frontend?
-
-Using Authorization header:
-Bearer <token>
