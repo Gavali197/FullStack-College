@@ -21,7 +21,7 @@ This repository acts as my **development playground + learning journal**.
 
 ---
 
-## 🧠 What I Am Learning
+## 🧠 What I Am Learning.
 
 This repository helps me practice and understand:
 

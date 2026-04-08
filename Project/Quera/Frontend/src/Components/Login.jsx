@@ -46,7 +46,7 @@ const Login = () => {
       const data = await res.json();
 
       // Save session data
-sessionStorage.setItem("user", JSON.stringify({ email : form.email }));
+// sessionStorage.setItem("user", JSON.stringify({ email : form.email }));
 
 
 
