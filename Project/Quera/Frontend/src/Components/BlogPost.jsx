@@ -18,9 +18,15 @@ const BlogPost = () => {
 
   const handleForm = async (e) => {
     e.preventDefault();
+    const checkLogin = sessionStorage.getItem("user")
+ 
 
     if (!form.heading || !form.description || !form.author) {
       seterror("field empty ");
+      return;
+    }else if(!checkLogin){
+     alert("require login")
+     return;
     }
 
     try {
