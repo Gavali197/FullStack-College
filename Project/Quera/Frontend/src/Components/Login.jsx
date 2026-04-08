@@ -46,13 +46,8 @@ const Login = () => {
       const data = await res.json();
 
       // Save session data
-// sessionStorage.setItem("user", JSON.stringify({ email : form.email }));
-
-
-
-// // Clear session
-// sessionStorage.removeItem("user");
-
+      // sessionStorage.setItem("user", JSON.stringify({ email : form.email }));
+      // sessionStorage.removeItem("user");
 
       if (res.ok) {
         navigate("/");
