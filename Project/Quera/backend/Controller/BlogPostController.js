@@ -1,6 +1,8 @@
 const blog = require("../Model/BlogModel");
 const user = require("../Model/UserModel");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken")
+
 
 exports.postBlog = async (req, res, next) => {
     try {
@@ -102,14 +104,23 @@ exports.loginUser = async (req, res, next) => {
             });
         }
 
+        const token = jwt.sign({
+            id : getEmail._id, email : getEmail.email
+        },
+        "Hemant",
+        {expiresIn:"1h"}
+    )
+
         res.json({
             message: "Login Successfully",
+            token,
 
             user: {
                 id: getEmail._id,
                 name: getEmail.name,
-                email: getEmail.email
+                email: getEmail.email,
             }
+
         })
     } catch (err) {
         next(err)
