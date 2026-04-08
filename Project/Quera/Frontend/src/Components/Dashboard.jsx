@@ -6,6 +6,7 @@ const Dashboard = () => {
   const [data, setdata] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
+  const [user, setuser] = useState(null);
 
   const API = "http://localhost:3030/api/v2";
 
@@ -28,8 +29,19 @@ const Dashboard = () => {
   //  navigate(`/blogs/${id}`)
   // };
 
+  const handleLogout = ()=>{
+    localStorage.removeItem("user");
+    setuser(null);
+    navigate("/");
+  }
+
   useEffect(() => {
     getData();
+
+    const storedData = localStorage.getItem("user");
+    if(storedData){
+      setuser(JSON.parse(storedData));
+    }
   }, []);
   return (
     <>
@@ -37,9 +49,15 @@ const Dashboard = () => {
         <div className="navbar">
           <ul>
            <button onClick={()=> navigate("/blogPost")}>Post Blog</button>
-            <button onClick={()=> navigate("/login")}>Login</button>
             
-          
+            {user ? (
+              <>
+                <span>Welcome, {user.name}</span>
+                <button onClick={handleLogout}>Logout</button>
+              </>
+            ) : (
+              <button onClick={() => navigate("/login")}>Login</button>
+            )}
           </ul>
         </div>
         <h1 className="heading">Heading Page Of new Blog Posted Here</h1>

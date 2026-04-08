@@ -50,6 +50,7 @@ const Login = () => {
       // sessionStorage.removeItem("user");
 
       if (res.ok) {
+        localStorage.setItem("user", JSON.stringify(data.user));
         navigate("/");
       } else {
         return seterror(data.message || "Login failed");
