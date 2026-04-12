@@ -25,10 +25,6 @@ const Dashboard = () => {
   }  
   };
 
-  // const handleBlogPostclick = async (id) => {
-  //  navigate(`/blogs/${id}`)
-  // };
-
   const handleLogout = ()=>{
     localStorage.removeItem("user");
     setuser(null);
@@ -48,8 +44,7 @@ const Dashboard = () => {
       <div className="dashboard">
         <div className="navbar">
           <ul>
-           <button onClick={()=> navigate("/blogPost")}>Post Blog</button>
-            
+            <button onClick={()=> navigate("/blogPost")}>Post Blog</button>
             {user ? (
               <>
                 <span>Welcome, {user.name}</span>

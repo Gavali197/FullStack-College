@@ -95,7 +95,7 @@
 }
 
 
-/* Container */
+
 .containe-login {
   width: 350px;
   margin: 40px auto;
@@ -104,7 +104,6 @@
   border: 1px solid #ccc;
 }
 
-/* Labels ONLY insid-login */
 .containe-login label {
   display: block;
   margin-top: 10px;
