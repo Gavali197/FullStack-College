@@ -18,6 +18,7 @@ const Login = () => {
   };
 
   const API = "http://localhost:3030/api/v2";
+  
 
   const handlForm = async (e) => {
     e.preventDefault();
@@ -45,8 +46,13 @@ const Login = () => {
         body: JSON.stringify(form),
       });
 
+
+
       const data = await res.json();
 
+
+      //sd
+      
       // Save session data
       // sessionStorage.setItem("user", JSON.stringify({ email : form.email }));
       // sessionStorage.removeItem("user");
