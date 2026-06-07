@@ -50,8 +50,6 @@ const Login = () => {
 
       const data = await res.json();
 
-
-      //sd
       
       // Save session data
       // sessionStorage.setItem("user", JSON.stringify({ email : form.email }));
